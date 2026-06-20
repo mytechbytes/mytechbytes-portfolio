@@ -1,0 +1,99 @@
+---
+import site from "../data/site.json";
+const t = site.terminal;
+const lastIdx = t.fields.length - 1;
+const linkedin = site.socials.find((s) => s.label === "LinkedIn");
+---
+
+<section class="relative pt-36 pb-24 sm:pt-44 sm:pb-32 overflow-hidden">
+  <div class="bg-grid absolute inset-0 -z-10"></div>
+  <div class="glow w-[460px] h-[460px] -top-24 -left-24"></div>
+  <div class="glow w-[380px] h-[380px] top-10 right-0 opacity-60"></div>
+
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[1.15fr_.85fr] gap-14 items-center relative">
+    <div>
+      <p class="eyebrow mb-6" data-reveal>{site.availability}</p>
+      <h1 class="font-display font-bold tracking-tight text-[var(--text)] leading-[1.02] text-[2.7rem] sm:text-6xl lg:text-[4.3rem]" data-reveal style="--reveal-delay:60ms">
+        {site.name}
+      </h1>
+      <p class="font-display text-xl sm:text-2xl mt-3 text-gradient font-semibold" data-reveal style="--reveal-delay:120ms" set:html={site.tagline}></p>
+      <p class="mt-7 text-[var(--text-soft)] text-lg leading-relaxed max-w-xl" data-reveal style="--reveal-delay:180ms" set:html={site.heroBio}></p>
+
+      <div class="flex flex-wrap items-center gap-3 mt-9" data-reveal style="--reveal-delay:240ms">
+        <a href={site.heroPrimary.href} class="btn btn-primary">
+          {site.heroPrimary.label}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href={site.resume} target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          View Resume
+        </a>
+        <a href={`mailto:${site.email}`} class="btn btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          Email me
+        </a>
+        {linkedin && (
+          <a href={linkedin.url} target="_blank" rel="noopener" class="btn btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            {linkedin.label}
+          </a>
+        )}
+      </div>
+
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-9 text-sm text-[var(--text-muted)] font-mono" data-reveal style="--reveal-delay:300ms">
+        <span class="inline-flex items-center gap-2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          {site.locationShort}
+        </span>
+      </div>
+    </div>
+
+    <!-- terminal card -->
+    <div data-reveal="scale" style="--reveal-delay:200ms">
+      <div class="terminal">
+        <div class="terminal-head">
+          <span class="dot" style="background:#ff5f57"></span>
+          <span class="dot" style="background:#febc2e"></span>
+          <span class="dot" style="background:#28c840"></span>
+          <span class="ml-2 text-[var(--text-muted)] text-xs">{t.filename}</span>
+        </div>
+        <div class="p-5 leading-relaxed">
+          <div class="term-line"><span class="term-mut">&#123;</span></div>
+          {t.fields.map((f, i) => {
+            const comma = i === lastIdx ? "" : ",";
+            if (f.type === "array") {
+              return (
+                <>
+                  <div class="term-line">&nbsp;&nbsp;<span class="term-key">"{f.key}"</span>: [</div>
+                  {(f.value as string[]).map((item, j) => (
+                    <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-str">"{item}"</span>{j === (f.value as string[]).length - 1 ? "" : ","}</div>
+                  ))}
+                  <div class="term-line">&nbsp;&nbsp;]{comma}</div>
+                </>
+              );
+            }
+            if (f.type === "number") {
+              return <div class="term-line">&nbsp;&nbsp;<span class="term-key">"{f.key}"</span>: <span class="term-num">{f.value}</span>{comma}</div>;
+            }
+            return (
+              <div class="term-line">&nbsp;&nbsp;<span class="term-key">"{f.key}"</span>: <span class="term-str">"{f.value}"</span>{f.cursor ? <> <span class="cursor-blink"></span></> : null}{comma}</div>
+            );
+          })}
+          <div class="term-line"><span class="term-mut">&#125;</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- stats strip -->
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 mt-20">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--border)]" data-reveal>
+      {site.stats.map((s) => (
+        <div class="bg-[var(--surface)] px-6 py-7 text-center sm:text-left">
+          <div class="font-display font-bold text-3xl sm:text-4xl text-[var(--text)]">{s.value}{s.suffix && <span class="text-[var(--accent)]">{s.suffix}</span>}</div>
+          <div class="text-sm text-[var(--text-muted)] mt-1">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

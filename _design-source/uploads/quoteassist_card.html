@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuoteAssist — Portfolio Card</title>
+<style>
+:root {
+  --bg:      #0d1117;
+  --bg2:     #161b22;
+  --bg3:     #1c2128;
+  --border:  #30363d;
+  --text:    #e6edf3;
+  --muted:   #8b949e;
+  --green:   #30a46c;
+  --greenl:  #7ee787;
+  --blue:    #388bfd;
+  --bluel:   #79c0ff;
+  --purple:  #a371f7;
+  --purplel: #d2a8ff;
+  --yellow:  #e3b341;
+  --red:     #f85149;
+  --orange:  #f0883e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); font-family: 'Segoe UI', system-ui, sans-serif; color: var(--text); padding: 24px; }
+
+/* ── CARD SHELL ── */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── TOP BAR ── */
+.top-bar {
+  background: linear-gradient(135deg,#0d1f33 0%,#161b22 60%,#0d1a0d 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 28px 32px 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: start;
+}
+.meta-row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:10px; }
+.badge {
+  font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  padding:3px 9px; border-radius:20px;
+}
+.b-poc  { background:rgba(227,179,65,.15); color:var(--yellow); border:1px solid rgba(227,179,65,.35); }
+.b-wip  { background:rgba(56,139,253,.12); color:var(--blue);   border:1px solid rgba(56,139,253,.35); }
+.b-ai   { background:rgba(163,113,247,.12);color:var(--purple); border:1px solid rgba(163,113,247,.35);}
+.card-title { font-size:26px; font-weight:800; color:var(--text); margin-bottom:4px; }
+.card-title span { color:var(--green); }
+.card-role  { font-size:12px; color:var(--bluel); font-weight:600; margin-bottom:12px; }
+.card-desc  { font-size:12px; color:var(--muted); line-height:1.7; max-width:600px; }
+
+.tags { display:flex; flex-wrap:wrap; gap:6px; }
+.tag  { font-size:10px; font-weight:600; padding:3px 10px; border-radius:5px; }
+.tg { color:var(--greenl); border:1px solid rgba(48,164,108,.4); background:rgba(48,164,108,.08); }
+.tb { color:var(--bluel);  border:1px solid rgba(56,139,253,.4); background:rgba(56,139,253,.08); }
+.tp { color:var(--purplel);border:1px solid rgba(163,113,247,.4);background:rgba(163,113,247,.08);}
+.ty { color:var(--yellow); border:1px solid rgba(227,179,65,.4); background:rgba(227,179,65,.08); }
+.to { color:var(--orange); border:1px solid rgba(240,136,62,.4); background:rgba(240,136,62,.08); }
+.td { color:var(--muted);  border:1px solid var(--border);       background:var(--bg3); }
+
+/* ── TWO-COL LAYOUT ── */
+.body-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.col-left  { padding:28px 28px; border-right:1px solid var(--border); }
+.col-right { padding:28px 28px; }
+
+.section-lbl {
+  font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+  color:var(--green); margin-bottom:16px; display:flex; align-items:center; gap:8px;
+}
+.section-lbl::after { content:''; flex:1; height:1px; background:var(--border); }
+
+/* feature list */
+.feat-list { display:flex; flex-direction:column; gap:12px; }
+.feat { display:flex; gap:10px; align-items:flex-start; }
+.feat-dot {
+  width:6px; height:6px; border-radius:50%; margin-top:5px; flex-shrink:0;
+}
+.feat-body {}
+.feat-name { font-size:12px; font-weight:700; color:var(--text); margin-bottom:2px; }
+.feat-desc { font-size:11px; color:var(--muted); line-height:1.5; }
+
+/* arch diagram area */
+.arch-section { padding:0 0 0 0; border-bottom:1px solid var(--border); }
+.arch-header {
+  padding:16px 28px 12px;
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  border-bottom:1px solid var(--border);
+}
+.flow-step-label {
+  font-size:11px; color:var(--muted);
+  background:var(--bg3); border:1px solid var(--border);
+  border-radius:6px; padding:5px 14px; min-width:280px;
+  transition: color 0.3s;
+}
+.flow-step-label.active { color:var(--text); border-color:#444; }
+
+.arch-inner { padding:20px 28px 24px; background:var(--bg); overflow-x:auto; }
+
+/* stack section */
+.stack-section { padding:24px 28px; border-bottom:1px solid var(--border); }
+.stack-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.stack-col { background:var(--bg3); border:1px solid var(--border); border-radius:8px; padding:14px; }
+.stack-title { font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:10px; }
+.stack-item { display:flex; gap:6px; align-items:flex-start; margin-bottom:8px; }
+.sdot { width:5px; height:5px; border-radius:50%; margin-top:5px; flex-shrink:0; }
+.stext { font-size:11px; color:var(--muted); line-height:1.4; }
+.stext strong { color:var(--text); display:block; font-size:11px; }
+
+/* suggest strip */
+.suggest-section { padding:24px 28px; }
+.suggest-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px; }
+.scard { background:var(--bg3); border:1px solid var(--border); border-radius:8px; padding:12px; }
+.stag  { font-size:8px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--yellow); margin-bottom:4px; }
+.sname { font-size:11px; font-weight:700; color:var(--text); margin-bottom:4px; }
+.sdesc { font-size:10px; color:var(--muted); line-height:1.4; }
+
+@media(max-width:700px){
+  .body-grid { grid-template-columns:1fr; }
+  .col-left  { border-right:none; border-bottom:1px solid var(--border); }
+  .stack-grid { grid-template-columns:1fr; }
+  .top-bar { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- ══ TOP BAR ══ -->
+  <div class="top-bar">
+    <div>
+      <div class="meta-row">
+        <span class="badge b-poc">POC · 2025–26</span>
+        <span class="badge b-wip">In Progress</span>
+        <span class="badge b-ai">AI-Powered</span>
+      </div>
+      <div class="card-title">Quote<span>Assist</span></div>
+      <div class="card-role">Personal Project · AI-Powered Quote Processing Platform</div>
+      <div class="card-desc">
+        End-to-end AI platform that ingests travel quote requests from Outlook, web forms, or any channel — extracts structured data, enforces corporate policies, generates pricing-ready JSON, and drafts intelligent email responses. Designed to self-improve through agent feedback, progressively graduating patterns to auto-send.
+      </div>
+    </div>
+    <div class="tags">
+      <span class="tag tg">Elixir</span>
+      <span class="tag tg">Phoenix</span>
+      <span class="tag tg">LiveView</span>
+      <span class="tag tg">OTP</span>
+      <span class="tag tb">Python</span>
+      <span class="tag tb">LLM / GenAI</span>
+      <span class="tag tb">RAG</span>
+      <span class="tag tp">React</span>
+      <span class="tag tp">MS Graph API</span>
+      <span class="tag tp">Outlook Add-in</span>
+      <span class="tag ty">Multi-tenant</span>
+      <span class="tag to">PostgreSQL</span>
+      <span class="tag td">REST APIs</span>
+    </div>
+  </div>
+
+  <!-- ══ FEATURES TWO-COL ══ -->
+  <div class="body-grid">
+    <div class="col-left">
+      <div class="section-lbl">Core Features</div>
+      <div class="feat-list">
+        <div class="feat"><div class="feat-dot" style="background:var(--blue);"></div><div class="feat-body"><div class="feat-name">Multi-channel Ingestion</div><div class="feat-desc">Outlook Add-in, web forms, and extensible webhook sources — all normalised through a unified ingestion pipeline before AI processing.</div></div></div>
+        <div class="feat"><div class="feat-dot" style="background:var(--purple);"></div><div class="feat-body"><div class="feat-name">AI-Driven Quote Extraction</div><div class="feat-desc">LLM parses free-form text to extract itineraries, services, dates, passenger counts — each field scored with a confidence value. Low-confidence fields flagged for human review.</div></div></div>
+        <div class="feat"><div class="feat-dot" style="background:var(--orange);"></div><div class="feat-body"><div class="feat-name">Corporate Policy Enforcement</div><div class="feat-desc">Validates against configurable rules — fare class mandates, preferred suppliers, advance booking windows, budget thresholds. Breaches trigger rejection or escalation.</div></div></div>
+        <div class="feat"><div class="feat-dot" style="background:var(--green);"></div><div class="feat-body"><div class="feat-name">Structured JSON Output</div><div class="feat-desc">Normalised into a predefined schema — ready for direct consumption by downstream pricing services. Zero manual reformatting.</div></div></div>
+        <div class="feat"><div class="feat-dot" style="background:var(--blue);"></div><div class="feat-body"><div class="feat-name">Smart Draft Generation</div><div class="feat-desc">Composes quote response email or — when data is missing — a targeted clarification email asking only for the absent fields.</div></div></div>
+        <div class="feat"><div class="feat-dot" style="background:var(--yellow);"></div><div class="feat-body"><div class="feat-name">Adaptive Learning → Auto-send</div><div class="feat-desc">Agent corrections become labelled training signals. Once confidence exceeds threshold per input pattern, that pattern graduates to auto-send. Kill switch reverts on confidence drop.</div></div></div>
+      </div>
+    </div>
+    <div class="col-right">
+      <div class="section-lbl">Additional Capabilities</div>
+      <div class="feat-list">
+        <div class="feat"><div class="feat-dot" style="background:var(--purple);"></div><div class="feat-body"><div class="feat-name">Confidence Scoring per Field</div><div class="feat-desc">Every AI-extracted field carries a score. Below threshold → flagged for agent review before any downstream action.</div></div></div>
+        <div class="feat"><div class="feat-dot" style="background:var(--green);"></div><div class="feat-body"><div class="feat-name">Quote Versioning</div><div class="feat-desc">Full iteration history per request thread. Agents see what changed across clarification cycles.</div></div></div>
+        <div class="feat"><div class="feat-dot" style="background:var(--orange);"></div><div class="feat-body"><div class="feat-name">Approval Workflow</div><div class="feat-desc">High-value or out-of-policy quotes route through a configurable approval chain before the draft is sent.</div></div></div>
+        <div class="feat"><div class="feat-dot" style="background:var(--yellow);"></div><div class="feat-body"><div class="feat-name">SLA Tracking</div><div class="feat-desc">Monitors response time per quote against agreed SLA windows. Escalates on breach.</div></div></div>
+        <div class="feat"><div class="feat-dot" style="background:var(--blue);"></div><div class="feat-body"><div class="feat-name">Audit Trail & Logging</div><div class="feat-desc">Every AI decision, policy check, extraction result, and draft action is logged — mandatory before auto-send is enabled on any pattern.</div></div></div>
+        <div class="feat"><div class="feat-dot" style="background:var(--green);"></div><div class="feat-body"><div class="feat-name">Multi-tenant Isolation</div><div class="feat-desc">Per-tenant policy rules, pricing endpoints, email templates, output schemas, and confidence thresholds — fully isolated per client.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ARCHITECTURE DIAGRAM ══ -->
+  <div class="arch-section">
+    <div class="arch-header">
+      <div class="section-lbl" style="margin-bottom:0; flex:1;">Architecture — Request Flow</div>
+      <div class="flow-step-label" id="flowLabel">Auto-playing request flow…</div>
+    </div>
+    <div class="arch-inner">
+      <svg id="archSvg" viewBox="0 0 1020 620" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="mg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#30a46c"/></marker>
+          <marker id="mb" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#388bfd"/></marker>
+          <marker id="mp" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#a371f7"/></marker>
+          <marker id="my" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#e3b341"/></marker>
+          <marker id="mr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#f85149"/></marker>
+          <marker id="mo" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#f0883e"/></marker>
+          <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="rglow"><feGaussianBlur stdDeviation="4" result="b"/><feColorMatrix in="b" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="rb"/><feMerge><feMergeNode in="rb"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect width="1020" height="620" fill="#0d1117" rx="10"/>
+
+        <!-- ══ COLUMN LABELS ══ -->
+        <text x="60"  y="22" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#555" font-weight="700" letter-spacing="1.5" text-anchor="middle">INGESTION</text>
+        <text x="240" y="22" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#555" font-weight="700" letter-spacing="1.5" text-anchor="middle">QUEUE</text>
+        <text x="410" y="22" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#555" font-weight="700" letter-spacing="1.5" text-anchor="middle">ORCHESTRATOR</text>
+        <text x="620" y="22" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#555" font-weight="700" letter-spacing="1.5" text-anchor="middle">AI ENGINE</text>
+        <text x="870" y="22" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#555" font-weight="700" letter-spacing="1.5" text-anchor="middle">OUTPUT</text>
+
+        <!-- ══ INGESTION SOURCES ══ -->
+        <!-- Outlook -->
+        <rect x="14" y="34" width="94" height="58" rx="8" fill="#1c2a3a" stroke="#388bfd" stroke-width="1.5"/>
+        <text x="61" y="56"  font-family="Segoe UI,sans-serif" font-size="10.5" fill="#79c0ff" text-anchor="middle" font-weight="700">Outlook</text>
+        <text x="61" y="70"  font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">MS Add-in</text>
+        <text x="61" y="83"  font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Graph API</text>
+
+        <!-- Web Form -->
+        <rect x="14" y="110" width="94" height="58" rx="8" fill="#1c2a3a" stroke="#388bfd" stroke-width="1.5"/>
+        <text x="61" y="132" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#79c0ff" text-anchor="middle" font-weight="700">Web Form</text>
+        <text x="61" y="146" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Phoenix</text>
+        <text x="61" y="159" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">LiveView</text>
+
+        <!-- Other -->
+        <rect x="14" y="186" width="94" height="46" rx="8" fill="#1a1f2e" stroke="#30363d" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="61" y="206" font-family="Segoe UI,sans-serif" font-size="10" fill="#555" text-anchor="middle" font-weight="700">Webhook</text>
+        <text x="61" y="222" font-family="Segoe UI,sans-serif" font-size="8"  fill="#444" text-anchor="middle">Extensible</text>
+
+        <!-- ingestion → queue arrows -->
+        <line id="la1" x1="108" y1="63"  x2="174" y2="120" stroke="#388bfd" stroke-width="1.5" marker-end="url(#mb)" opacity="0.2"/>
+        <line id="la2" x1="108" y1="139" x2="174" y2="130" stroke="#388bfd" stroke-width="1.5" marker-end="url(#mb)" opacity="0.2"/>
+        <line id="la3" x1="108" y1="209" x2="174" y2="140" stroke="#30363d" stroke-width="1.2" marker-end="url(#mb)" opacity="0.2" stroke-dasharray="4,3"/>
+
+        <!-- ══ QUEUE BOX ══ -->
+        <rect x="176" y="34" width="124" height="200" rx="10" fill="#131a23" stroke="#388bfd" stroke-width="1.8"/>
+        <rect x="216" y="24" width="44"  height="16" rx="8" fill="#388bfd"/>
+        <text x="238" y="35" font-family="Segoe UI,sans-serif" font-size="7.5" fill="#fff" text-anchor="middle" font-weight="700" letter-spacing="1">QUEUE</text>
+
+        <!-- queue internals -->
+        <text x="238" y="62" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle" font-weight="700">Elixir / OTP</text>
+        <!-- queue items -->
+        <rect x="190" y="70" width="98" height="20" rx="4" fill="#1c2a3a" stroke="#388bfd" stroke-width="1" opacity="0.9"/>
+        <text x="239" y="84" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#79c0ff" text-anchor="middle">msg #1 — pending</text>
+        <rect x="190" y="96" width="98" height="20" rx="4" fill="#1c2a3a" stroke="#388bfd" stroke-width="1" opacity="0.7"/>
+        <text x="239" y="110" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#79c0ff" text-anchor="middle">msg #2 — pending</text>
+        <rect x="190" y="122" width="98" height="20" rx="4" fill="#1c2a3a" stroke="#388bfd" stroke-width="1" opacity="0.5"/>
+        <text x="239" y="136" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#555" text-anchor="middle">msg #3 — queued</text>
+        <rect x="190" y="148" width="98" height="20" rx="4" fill="#131a23" stroke="#30363d" stroke-width="1" opacity="0.4"/>
+        <text x="239" y="162" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#444" text-anchor="middle">msg #4 — queued</text>
+
+        <text x="238" y="195" font-family="Segoe UI,sans-serif" font-size="8" fill="#555" text-anchor="middle">Oban / GenServer</text>
+        <text x="238" y="208" font-family="Segoe UI,sans-serif" font-size="8" fill="#555" text-anchor="middle">Retry · DLQ · Priority</text>
+        <text x="238" y="221" font-family="Segoe UI,sans-serif" font-size="8" fill="#555" text-anchor="middle">Backpressure control</text>
+
+        <!-- queue → orchestrator -->
+        <line id="la4" x1="300" y1="134" x2="330" y2="200" stroke="#388bfd" stroke-width="1.5" marker-end="url(#mb)" opacity="0.2"/>
+
+        <!-- ══ ORCHESTRATOR (Phoenix/Elixir) ══ -->
+        <rect x="332" y="160" width="148" height="148" rx="10" fill="#1c2a1c" stroke="#30a46c" stroke-width="2"/>
+        <text x="406" y="183" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#8b949e" text-anchor="middle" font-weight="700" letter-spacing="1">ORCHESTRATOR</text>
+        <text x="406" y="200" font-family="Segoe UI,sans-serif" font-size="11.5" fill="#7ee787" text-anchor="middle" font-weight="700">Phoenix / Elixir</text>
+
+        <!-- internals -->
+        <rect x="344" y="208" width="124" height="18" rx="4" fill="#0d1f15" stroke="#30a46c" stroke-width="1" opacity="0.8"/>
+        <text x="406" y="221" font-family="Segoe UI,sans-serif" font-size="8" fill="#7ee787" text-anchor="middle">Context · State machine</text>
+        <rect x="344" y="230" width="124" height="18" rx="4" fill="#0d1f15" stroke="#30a46c" stroke-width="1" opacity="0.8"/>
+        <text x="406" y="243" font-family="Segoe UI,sans-serif" font-size="8" fill="#7ee787" text-anchor="middle">Multi-tenant routing</text>
+        <rect x="344" y="252" width="124" height="18" rx="4" fill="#0d1f15" stroke="#30a46c" stroke-width="1" opacity="0.8"/>
+        <text x="406" y="265" font-family="Segoe UI,sans-serif" font-size="8" fill="#7ee787" text-anchor="middle">Policy config loader</text>
+        <rect x="344" y="274" width="124" height="18" rx="4" fill="#0d1f15" stroke="#30a46c" stroke-width="1" opacity="0.8"/>
+        <text x="406" y="287" font-family="Segoe UI,sans-serif" font-size="8" fill="#7ee787" text-anchor="middle">Audit logger</text>
+        <rect x="344" y="296" width="124" height="6" rx="3" fill="#0d1f15" stroke="#30a46c" stroke-width="1" opacity="0.5"/>
+
+        <!-- orchestrator → AI -->
+        <line id="la5" x1="480" y1="234" x2="520" y2="180" stroke="#30a46c" stroke-width="1.5" marker-end="url(#mg)" opacity="0.2"/>
+
+        <!-- ══ AI ENGINE BOX ══ -->
+        <rect x="522" y="34" width="220" height="450" rx="12" fill="#130f1f" stroke="#a371f7" stroke-width="2"/>
+        <rect x="572" y="23" width="100" height="16" rx="8" fill="#a371f7"/>
+        <text x="622" y="34" font-family="Segoe UI,sans-serif" font-size="8" fill="#fff" text-anchor="middle" font-weight="700" letter-spacing="1">PYTHON AI ENGINE</text>
+
+        <!-- Step 1: Extraction -->
+        <rect x="534" y="50" width="196" height="72" rx="8" fill="#1f1635" stroke="#a371f7" stroke-width="1.3"/>
+        <text x="632" y="68" font-family="Segoe UI,sans-serif" font-size="10" fill="#d2a8ff" text-anchor="middle" font-weight="700">1. Quote Extraction</text>
+        <text x="632" y="83" font-family="Segoe UI,sans-serif" font-size="8"  fill="#8b949e" text-anchor="middle">LLM parsing · NLP · Field detection</text>
+        <text x="632" y="96" font-family="Segoe UI,sans-serif" font-size="8"  fill="#8b949e" text-anchor="middle">Itineraries · Services · Pax count</text>
+        <text x="632" y="109" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Confidence score per field</text>
+
+        <!-- fail arrow from extraction -->
+        <line id="lf1" x1="534" y1="86" x2="488" y2="86" stroke="#f85149" stroke-width="1.5" marker-end="url(#mr)" opacity="0.15" stroke-dasharray="4,3"/>
+        <text x="511" y="79" font-family="Segoe UI,sans-serif" font-size="7.5" fill="#f85149" text-anchor="middle" font-weight="700">extract fail</text>
+
+        <text x="632" y="136" font-family="Segoe UI,sans-serif" font-size="11" fill="#333" text-anchor="middle">↓</text>
+
+        <!-- Step 2: Confidence gate -->
+        <rect x="534" y="142" width="196" height="62" rx="8" fill="#1f1635" stroke="#e3b341" stroke-width="1.3"/>
+        <text x="632" y="160" font-family="Segoe UI,sans-serif" font-size="10" fill="#e3b341" text-anchor="middle" font-weight="700">2. Confidence Gate</text>
+        <text x="632" y="175" font-family="Segoe UI,sans-serif" font-size="8"  fill="#8b949e" text-anchor="middle">Score &lt; threshold → human review</text>
+        <text x="632" y="188" font-family="Segoe UI,sans-serif" font-size="8"  fill="#8b949e" text-anchor="middle">Score ≥ threshold → continue</text>
+        <text x="632" y="200" font-family="Segoe UI,sans-serif" font-size="8"  fill="#8b949e" text-anchor="middle">Auto-send graduation check</text>
+
+        <!-- low confidence → review -->
+        <line id="lf2" x1="534" y1="170" x2="488" y2="340" stroke="#e3b341" stroke-width="1.3" marker-end="url(#my)" opacity="0.15" stroke-dasharray="4,3"/>
+
+        <text x="632" y="218" font-family="Segoe UI,sans-serif" font-size="11" fill="#333" text-anchor="middle">↓</text>
+
+        <!-- Step 3: Missing data -->
+        <rect x="534" y="224" width="196" height="62" rx="8" fill="#1f1635" stroke="#a371f7" stroke-width="1.3"/>
+        <text x="632" y="242" font-family="Segoe UI,sans-serif" font-size="10" fill="#d2a8ff" text-anchor="middle" font-weight="700">3. Missing Data Detection</text>
+        <text x="632" y="257" font-family="Segoe UI,sans-serif" font-size="8"  fill="#8b949e" text-anchor="middle">Gap analysis on required fields</text>
+        <text x="632" y="270" font-family="Segoe UI,sans-serif" font-size="8"  fill="#8b949e" text-anchor="middle">Triggers clarification draft</text>
+        <text x="632" y="283" font-family="Segoe UI,sans-serif" font-size="8"  fill="#8b949e" text-anchor="middle">Suspends downstream flow</text>
+
+        <text x="632" y="300" font-family="Segoe UI,sans-serif" font-size="11" fill="#333" text-anchor="middle">↓</text>
+
+        <!-- Step 4: Policy check -->
+        <rect x="534" y="306" width="196" height="62" rx="8" fill="#1f1635" stroke="#f0883e" stroke-width="1.3"/>
+        <text x="632" y="324" font-family="Segoe UI,sans-serif" font-size="10" fill="#f0883e" text-anchor="middle" font-weight="700">4. Policy Enforcement</text>
+        <text x="632" y="339" font-family="Segoe UI,sans-serif" font-size="8"  fill="#8b949e" text-anchor="middle">Fare class · Supplier mandate</text>
+        <text x="632" y="352" font-family="Segoe UI,sans-serif" font-size="8"  fill="#8b949e" text-anchor="middle">Budget threshold · RAG rules</text>
+        <text x="632" y="365" font-family="Segoe UI,sans-serif" font-size="8"  fill="#8b949e" text-anchor="middle">Breach → reject / escalate</text>
+
+        <!-- policy breach arrow -->
+        <line id="lf3" x1="534" y1="337" x2="488" y2="460" stroke="#f85149" stroke-width="1.5" marker-end="url(#mr)" opacity="0.15" stroke-dasharray="4,3"/>
+
+        <text x="632" y="382" font-family="Segoe UI,sans-serif" font-size="11" fill="#333" text-anchor="middle">↓</text>
+
+        <!-- Step 5: Draft gen -->
+        <rect x="534" y="388" width="196" height="62" rx="8" fill="#1f1635" stroke="#a371f7" stroke-width="1.3"/>
+        <text x="632" y="406" font-family="Segoe UI,sans-serif" font-size="10" fill="#d2a8ff" text-anchor="middle" font-weight="700">5. Draft Generation</text>
+        <text x="632" y="421" font-family="Segoe UI,sans-serif" font-size="8"  fill="#8b949e" text-anchor="middle">Response email · Template engine</text>
+        <text x="632" y="434" font-family="Segoe UI,sans-serif" font-size="8"  fill="#8b949e" text-anchor="middle">Locale · Tenant branding</text>
+        <text x="632" y="447" font-family="Segoe UI,sans-serif" font-size="8"  fill="#8b949e" text-anchor="middle">JSON schema for pricing</text>
+
+        <!-- AI → outputs -->
+        <line id="la6" x1="742" y1="80"  x2="808" y2="58"  stroke="#a371f7" stroke-width="1.5" marker-end="url(#mp)" opacity="0.2"/>
+        <line id="la7" x1="742" y1="200" x2="808" y2="150" stroke="#388bfd" stroke-width="1.5" marker-end="url(#mb)" opacity="0.2"/>
+        <line id="la8" x1="742" y1="260" x2="808" y2="232" stroke="#e3b341" stroke-width="1.5" marker-end="url(#my)" opacity="0.2"/>
+        <line id="la9" x1="742" y1="420" x2="808" y2="310" stroke="#30a46c" stroke-width="1.5" marker-end="url(#mg)" opacity="0.2"/>
+
+        <!-- ══ OUTPUT COLUMN ══ -->
+
+        <!-- Pricing JSON -->
+        <rect x="810" y="34"  width="190" height="68" rx="8" fill="#1c2a1c" stroke="#30a46c" stroke-width="1.5"/>
+        <text x="905" y="54"  font-family="Segoe UI,sans-serif" font-size="9.5" fill="#7ee787" text-anchor="middle" font-weight="700">Pricing Service</text>
+        <text x="905" y="69"  font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Predefined JSON schema</text>
+        <text x="905" y="82"  font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Downstream API · Zero reformatting</text>
+        <text x="905" y="95"  font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Single / multi itinerary</text>
+
+        <!-- Draft Response -->
+        <rect x="810" y="118" width="190" height="62" rx="8" fill="#1c2a3a" stroke="#388bfd" stroke-width="1.5"/>
+        <text x="905" y="138" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#79c0ff" text-anchor="middle" font-weight="700">Draft Response Email</text>
+        <text x="905" y="153" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Quote details to client</text>
+        <text x="905" y="166" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Via Outlook / channel</text>
+        <text x="905" y="179" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Agent review or auto-send</text>
+
+        <!-- Clarification -->
+        <rect x="810" y="196" width="190" height="62" rx="8" fill="#1f1810" stroke="#e3b341" stroke-width="1.5"/>
+        <text x="905" y="216" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#e3b341" text-anchor="middle" font-weight="700">Clarification Mail</text>
+        <text x="905" y="231" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Missing fields only</text>
+        <text x="905" y="244" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Targeted · Auto-drafted</text>
+        <text x="905" y="257" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Suspends until reply</text>
+
+        <!-- Approval -->
+        <rect x="810" y="274" width="190" height="62" rx="8" fill="#1f1508" stroke="#f0883e" stroke-width="1.5"/>
+        <text x="905" y="294" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#f0883e" text-anchor="middle" font-weight="700">Approval Workflow</text>
+        <text x="905" y="309" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">High-value / out-of-policy</text>
+        <text x="905" y="322" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Configurable approval chain</text>
+        <text x="905" y="335" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Human gate before send</text>
+
+        <!-- FAILURE outputs -->
+        <!-- DLQ / extraction fail -->
+        <rect x="350" y="60"  width="132" height="52" rx="8" fill="#1f0d0d" stroke="#f85149" stroke-width="1.5"/>
+        <text x="416" y="80"  font-family="Segoe UI,sans-serif" font-size="9.5" fill="#f85149" text-anchor="middle" font-weight="700">Dead Letter Queue</text>
+        <text x="416" y="95"  font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Extraction fail · Retry exhausted</text>
+        <text x="416" y="108" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Alert · Manual intervention</text>
+
+        <!-- Human Review -->
+        <rect x="350" y="310" width="132" height="52" rx="8" fill="#1f1810" stroke="#e3b341" stroke-width="1.5"/>
+        <text x="416" y="330" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#e3b341" text-anchor="middle" font-weight="700">Human Review</text>
+        <text x="416" y="345" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Low confidence fields</text>
+        <text x="416" y="358" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Agent correction → signal</text>
+
+        <!-- Policy Rejected -->
+        <rect x="350" y="432" width="132" height="52" rx="8" fill="#1f0d0d" stroke="#f85149" stroke-width="1.5"/>
+        <text x="416" y="452" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#f85149" text-anchor="middle" font-weight="700">Policy Rejected</text>
+        <text x="416" y="467" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Breach logged · Client notified</text>
+        <text x="416" y="480" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Compliance audit trail</text>
+
+        <!-- ══ FEEDBACK LOOP ══ -->
+        <rect x="332" y="530" width="620" height="64" rx="10" fill="#131008" stroke="#e3b341" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <text x="642" y="550" font-family="Segoe UI,sans-serif" font-size="9"   fill="#e3b341" text-anchor="middle" font-weight="700" letter-spacing="1.5">ADAPTIVE LEARNING — FEEDBACK LOOP</text>
+        <text x="642" y="566" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#8b949e" text-anchor="middle">Agent corrections → labelled training signals → model fine-tuning → confidence threshold registry → auto-send graduation per pattern</text>
+        <text x="642" y="582" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#555"    text-anchor="middle">Kill switch reverts any pattern to human review on confidence drop or policy breach · Full audit trail mandatory before auto-send enabled</text>
+
+        <!-- feedback arrows -->
+        <line id="lfb1" x1="416" y1="362" x2="416" y2="528" stroke="#e3b341" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#my)" opacity="0.2"/>
+        <line id="lfb2" x1="622" y1="530" x2="622" y2="450" stroke="#e3b341" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#my)" opacity="0.2"/>
+        <line id="lfb3" x1="406" y1="530" x2="406" y2="308" stroke="#e3b341" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#my)" opacity="0.2"/>
+
+        <!-- ══ DATABASE ══ -->
+        <rect x="858" y="370" width="150" height="100" rx="8" fill="#1c2128" stroke="#30363d" stroke-width="1.5"/>
+        <text x="933" y="392" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#8b949e" text-anchor="middle" font-weight="700" letter-spacing="1">PERSISTENCE</text>
+        <text x="933" y="410" font-family="Segoe UI,sans-serif" font-size="11"  fill="#e6edf3" text-anchor="middle" font-weight="700">PostgreSQL</text>
+        <text x="933" y="426" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Quotes · Audit logs</text>
+        <text x="933" y="440" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Training signals</text>
+        <text x="933" y="454" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Tenant config · SLA data</text>
+        <text x="933" y="466" font-family="Segoe UI,sans-serif" font-size="8"   fill="#8b949e" text-anchor="middle">Version history</text>
+        <line x1="858" y1="420" x2="808" y2="350" stroke="#30363d" stroke-width="1" stroke-dasharray="3,3"/>
+
+        <!-- ══ ANIMATED DOT ══ -->
+        <circle id="animDot" cx="-50" cy="-50" r="7" fill="#fff" filter="url(#glow)" opacity="0"/>
+
+        <!-- ══ LEGEND ══ -->
+        <circle cx="14"  cy="608" r="4" fill="#388bfd"/> <text x="22"  cy="0" y="612" font-family="Segoe UI,sans-serif" font-size="8" fill="#555">Ingestion</text>
+        <circle cx="80"  cy="608" r="4" fill="#30a46c"/> <text x="88"  cy="0" y="612" font-family="Segoe UI,sans-serif" font-size="8" fill="#555">Orchestration</text>
+        <circle cx="170" cy="608" r="4" fill="#a371f7"/> <text x="178" cy="0" y="612" font-family="Segoe UI,sans-serif" font-size="8" fill="#555">AI Processing</text>
+        <circle cx="260" cy="608" r="4" fill="#e3b341"/> <text x="268" cy="0" y="612" font-family="Segoe UI,sans-serif" font-size="8" fill="#555">Feedback / Learning</text>
+        <circle cx="380" cy="608" r="4" fill="#f85149"/> <text x="388" cy="0" y="612" font-family="Segoe UI,sans-serif" font-size="8" fill="#555">Failure / Rejection</text>
+        <circle cx="460" cy="608" r="4" fill="#f0883e"/> <text x="468" cy="0" y="612" font-family="Segoe UI,sans-serif" font-size="8" fill="#555">Approval</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ══ TECH STACK ══ -->
+  <div class="stack-section">
+    <div class="section-lbl">Technology Stack</div>
+    <div class="stack-grid">
+      <div class="stack-col">
+        <div class="stack-title" style="color:var(--greenl);">🟢 Platform — Elixir / Phoenix</div>
+        <div class="stack-item"><div class="sdot" style="background:var(--green);"></div><div class="stext"><strong>Phoenix Framework + LiveView</strong>Core platform, real-time UI, multi-tenant orchestration, web form ingestion</div></div>
+        <div class="stack-item"><div class="sdot" style="background:var(--green);"></div><div class="stext"><strong>Elixir / OTP — Oban / GenServer</strong>Fault-tolerant queue, retry logic, DLQ, backpressure, concurrent processing</div></div>
+        <div class="stack-item"><div class="sdot" style="background:var(--green);"></div><div class="stext"><strong>PostgreSQL</strong>Quote storage, audit logs, training signals, tenant config, version history, SLA data</div></div>
+        <div class="stack-item"><div class="sdot" style="background:var(--green);"></div><div class="stext"><strong>REST / HTTP</strong>Internal service comms, pricing API integration, webhook ingestion</div></div>
+      </div>
+      <div class="stack-col">
+        <div class="stack-title" style="color:var(--purplel);">🟣 AI Services — Python</div>
+        <div class="stack-item"><div class="sdot" style="background:var(--purple);"></div><div class="stext"><strong>LLM / GenAI</strong>Quote extraction, field parsing, multi-itinerary detection, draft generation</div></div>
+        <div class="stack-item"><div class="sdot" style="background:var(--purple);"></div><div class="stext"><strong>RAG Pipeline</strong>Policy document retrieval — contextual enforcement using corporate rule corpus</div></div>
+        <div class="stack-item"><div class="sdot" style="background:var(--purple);"></div><div class="stext"><strong>Confidence Scoring + Threshold Registry</strong>Per-field accuracy scoring, auto-send graduation tracking, per-pattern kill switch</div></div>
+        <div class="stack-item"><div class="sdot" style="background:var(--purple);"></div><div class="stext"><strong>Fine-tuning Pipeline</strong>Agent correction signals → labelled data → periodic model improvement</div></div>
+      </div>
+      <div class="stack-col">
+        <div class="stack-title" style="color:var(--bluel);">🔵 Frontend — React / Microsoft</div>
+        <div class="stack-item"><div class="sdot" style="background:var(--blue);"></div><div class="stext"><strong>React + Office JS SDK</strong>Outlook Add-in UI — task pane, compose integration, agent review interface</div></div>
+        <div class="stack-item"><div class="sdot" style="background:var(--blue);"></div><div class="stext"><strong>Microsoft Graph API</strong>Outlook email read/send, identity, calendar — core ingestion and output channel</div></div>
+        <div class="stack-item"><div class="sdot" style="background:var(--blue);"></div><div class="stext"><strong>Phoenix LiveView</strong>Web form ingestion channel, real-time status, agent dashboard, SLA view</div></div>
+        <div class="stack-item"><div class="sdot" style="background:var(--blue);"></div><div class="stext"><strong>Analytics Dashboard</strong>Quote volume, AI accuracy, policy breach rate, auto-send graduation, turnaround time</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ROADMAP ══ -->
+  <div class="suggest-section">
+    <div class="section-lbl">Roadmap Additions</div>
+    <div class="suggest-grid">
+      <div class="scard"><div class="stag">Roadmap</div><div class="sname">Auto-send Graduation Dashboard</div><div class="sdesc">Visual view of which input patterns have graduated, their confidence trend, and one-click kill switch per pattern.</div></div>
+      <div class="scard"><div class="stag">Roadmap</div><div class="sname">Voice / WhatsApp Ingestion</div><div class="sdesc">Transcribe voice notes or WhatsApp messages — fed through the same AI extraction pipeline.</div></div>
+      <div class="scard"><div class="stag">Roadmap</div><div class="sname">Multi-language Support</div><div class="sdesc">Accept quote requests in multiple languages — AI translates and normalises before extraction.</div></div>
+      <div class="scard"><div class="stag">Roadmap</div><div class="sname">Cost Estimation Preview</div><div class="sdesc">AI-estimated fare range before hitting pricing service — catches obvious outliers early.</div></div>
+      <div class="scard"><div class="stag">Roadmap</div><div class="sname">Supplier Preference Ranking</div><div class="sdesc">AI ranks itinerary options by corporate preferred suppliers before passing to pricing.</div></div>
+      <div class="scard"><div class="stag">Roadmap</div><div class="sname">Webhook Status Push</div><div class="sdesc">Push quote lifecycle events to external systems via configurable webhooks per tenant.</div></div>
+    </div>
+  </div>
+
+</div><!-- /card -->
+
+<script>
+// ── Flow steps: each has label, arrows to highlight, dot path, color, type
+const steps = [
+  { label:"1 — Quote request received via Outlook / Web Form",         arrows:["la1","la2"],     path:[{x:61,y:63},{x:200,y:100}],    color:"#388bfd", type:"normal" },
+  { label:"2 — Message enqueued in Elixir / OTP Queue (Oban)",         arrows:["la3"],            path:[{x:200,y:100},{x:238,y:100}],  color:"#388bfd", type:"normal" },
+  { label:"3 — Queue dequeues and sends to Phoenix Orchestrator",       arrows:["la4"],            path:[{x:238,y:160},{x:406,y:200}],  color:"#388bfd", type:"normal" },
+  { label:"4 — Orchestrator routes to Python AI Engine",               arrows:["la5"],            path:[{x:480,y:234},{x:622,y:150}],  color:"#30a46c", type:"normal" },
+  { label:"5 — AI: Quote Extraction (LLM + NLP + confidence scoring)", arrows:[],                 path:[{x:622,y:90},{x:622,y:140}],  color:"#a371f7", type:"normal" },
+  { label:"5a — ⚠ FAILURE: Extraction fails → Dead Letter Queue",      arrows:["lf1"],            path:[{x:534,y:86},{x:482,y:86}],   color:"#f85149", type:"failure" },
+  { label:"6 — Confidence Gate: score checked per field",              arrows:[],                 path:[{x:622,y:160},{x:622,y:200}], color:"#e3b341", type:"normal" },
+  { label:"6a — ⚠ Low confidence → Human Review queue",               arrows:["lf2"],            path:[{x:534,y:170},{x:416,y:335}], color:"#e3b341", type:"warning" },
+  { label:"7 — Missing Data Detection: gap analysis on fields",        arrows:[],                 path:[{x:622,y:240},{x:622,y:280}], color:"#a371f7", type:"normal" },
+  { label:"7a — Missing fields → Clarification mail drafted",          arrows:["la8"],            path:[{x:742,y:260},{x:905,y:227}], color:"#e3b341", type:"warning" },
+  { label:"8 — Policy Enforcement: corporate rules checked via RAG",   arrows:[],                 path:[{x:622,y:320},{x:622,y:360}], color:"#f0883e", type:"normal" },
+  { label:"8a — ⚠ FAILURE: Policy breach → Rejected + audit logged",  arrows:["lf3"],            path:[{x:534,y:337},{x:416,y:457}], color:"#f85149", type:"failure" },
+  { label:"9 — Draft Generation: response email + pricing JSON built", arrows:[],                 path:[{x:622,y:400},{x:622,y:435}], color:"#a371f7", type:"normal" },
+  { label:"10 — Output: JSON → Pricing Service",                       arrows:["la6","la9"],      path:[{x:742,y:420},{x:905,y:67}],  color:"#30a46c", type:"normal" },
+  { label:"11 — Draft email created → Agent review or auto-send",      arrows:["la7"],            path:[{x:742,y:200},{x:905,y:149}], color:"#388bfd", type:"normal" },
+  { label:"12 — High-value quote → Approval Workflow gate",            arrows:[],                 path:[{x:905,y:275},{x:905,y:335}], color:"#f0883e", type:"normal" },
+  { label:"13 — Agent corrects extraction → Feedback Loop triggered",  arrows:["lfb1","lfb3"],   path:[{x:416,y:362},{x:416,y:528}], color:"#e3b341", type:"learning" },
+  { label:"14 — Training signal stored → Model fine-tuning scheduled", arrows:["lfb2"],           path:[{x:622,y:530},{x:622,y:450}], color:"#e3b341", type:"learning" },
+  { label:"✅ Flow complete — replaying in 3s…",                        arrows:[],                 path:[{x:622,y:400},{x:622,y:400}], color:"#30a46c", type:"done" },
+];
+
+const dot   = document.getElementById("animDot");
+const label = document.getElementById("flowLabel");
+const allArrows = ["la1","la2","la3","la4","la5","la6","la7","la8","la9","lf1","lf2","lf3","lfb1","lfb2","lfb3"];
+
+let stepIdx = 0;
+let running = false;
+let timer   = null;
+
+const colorMap = {
+  normal:   "#ffffff",
+  failure:  "#f85149",
+  warning:  "#e3b341",
+  learning: "#e3b341",
+  done:     "#30a46c",
+};
+
+function resetDiagram() {
+  clearTimeout(timer);
+  running  = false;
+  stepIdx  = 0;
+  dot.setAttribute("opacity","0");
+  dot.setAttribute("cx","-50");
+  dot.setAttribute("cy","-50");
+  allArrows.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.setAttribute("opacity","0.15");
+  });
+  label.textContent = "Auto-playing request flow…";
+  label.classList.remove("active");
+}
+
+function animateDot(x1,y1,x2,y2,color,ms,cb){
+  dot.setAttribute("fill", color);
+  dot.setAttribute("r", color === "#f85149" ? "8" : "7");
+  dot.setAttribute("opacity","1");
+  const t0 = performance.now();
+  function frame(now){
+    const t    = Math.min((now - t0) / ms, 1);
+    const ease = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+    dot.setAttribute("cx", x1 + (x2-x1)*ease);
+    dot.setAttribute("cy", y1 + (y2-y1)*ease);
+    if(t < 1) requestAnimationFrame(frame);
+    else { cb && cb(); }
+  }
+  requestAnimationFrame(frame);
+}
+
+function runStep(){
+  if(stepIdx >= steps.length){ resetDiagram(); timer = setTimeout(()=>{ running=true; runStep(); }, 2000); return; }
+  const s = steps[stepIdx];
+
+  label.textContent = s.label;
+  label.classList.add("active");
+
+  s.arrows.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.setAttribute("opacity","1");
+  });
+
+  const dotColor = colorMap[s.type] || "#fff";
+  const p = s.path;
+  const dur = s.type === "done" ? 400 : (s.type === "failure" ? 600 : 750);
+
+  animateDot(p[0].x, p[0].y, p[1].x, p[1].y, dotColor, dur, () => {
+    stepIdx++;
+    const delay = s.type === "failure" ? 1000 : (s.type === "done" ? 500 : 700);
+    timer = setTimeout(runStep, delay);
+  });
+}
+
+// auto-start
+function startFlow(){
+  resetDiagram();
+  running = true;
+  timer = setTimeout(runStep, 800);
+}
+
+startFlow();
+</script>
+
+</body>
+</html>

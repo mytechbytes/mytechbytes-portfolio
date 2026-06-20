@@ -1,0 +1,36 @@
+---
+import site from "../data/site.json";
+
+function resolve(link: any) {
+  switch (link.type) {
+    case "email":
+      return { href: `mailto:${site.email}` };
+    case "social": {
+      const s = site.socials.find((x) => x.label === link.ref);
+      return { href: s?.url ?? "#", target: "_blank", rel: "noopener" };
+    }
+    case "resume":
+      return { href: site.resume, download: true };
+    default:
+      return { href: link.href ?? "#" };
+  }
+}
+---
+
+<footer class="border-t border-[var(--border)] py-10">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <span class="monogram w-9 h-9 rounded-lg grid place-items-center text-sm">{site.monogram}</span>
+      <span class="font-display font-bold text-[var(--text)]">{site.name}</span>
+    </div>
+    <p class="text-sm text-[var(--text-muted)] font-mono">© <span id="year">2026</span> · {site.footer.tagline}</p>
+    <div class="flex items-center gap-5">
+      {site.footer.links.map((link) => {
+        const a = resolve(link);
+        return (
+          <a href={a.href} target={a.target} rel={a.rel} download={a.download} class="link-underline text-sm">{link.label}</a>
+        );
+      })}
+    </div>
+  </div>
+</footer>

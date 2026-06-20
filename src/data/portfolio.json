@@ -1,0 +1,399 @@
+{
+  "about": {
+    "eyebrow": "01 — About",
+    "heading": "Setting technical direction, then making it ship.",
+    "paragraphs": [
+      "I'm a software architect and engineering leader who breaks big monolithic applications into smaller, independent services, shapes how systems talk to each other, and builds in security and scale from the start.",
+      "I'm known for setting technical direction, mentoring teams through design and code reviews, and turning complex business needs into simple, maintainable solutions — most recently leading architecture for large airline platforms at Emirates."
+    ],
+    "roleCards": [
+      { "title": "Architect", "desc": "System design, scalability & service boundaries" },
+      { "title": "Leader", "desc": "Mentoring, design reviews & technical direction" },
+      { "title": "Builder", "desc": "Hands-on across backend, frontend & data" }
+    ]
+  },
+
+  "skills": {
+    "eyebrow": "02 — Core competencies",
+    "heading": "A full-stack architect's toolkit.",
+    "signatureTitle": "Signature strengths",
+    "signature": [
+      { "label": "Microservices & System Design", "level": 95 },
+      { "label": "Java 17 & Spring Boot", "level": 95 },
+      { "label": "Event-Driven Architecture", "level": 90 },
+      { "label": "Kafka & Solace Messaging", "level": 88 },
+      { "label": "Frontend & Micro-frontends", "level": 82 },
+      { "label": "Security & VAPT Remediation", "level": 85 }
+    ],
+    "categories": [
+      { "name": "Architecture & Design", "half": false, "items": ["Microservices", "Event-Driven", "Distributed Systems", "Domain-Driven Design", "API Gateway", "Sidecar Pattern", "System Design"] },
+      { "name": "Backend", "half": false, "items": ["Java 17", "Spring Boot", "Spring Cloud", "Hibernate", "Struts 2", "REST APIs"] },
+      { "name": "Frontend", "half": true, "items": ["AngularJS", "React.js", "Vue.js", "Module Federation", "Webpack"] },
+      { "name": "Messaging & Data", "half": true, "items": ["Apache Kafka", "Solace PubSub+", "Couchbase", "Oracle", "MySQL", "Apache Solr"] },
+      { "name": "Platform & Practice", "half": false, "items": ["Token-based Auth", "CI/CD", "Jenkins", "Git", "VAPT / PT", "Agile / Scrum", "Mentoring"] },
+      { "name": "Also / Add-on", "half": false, "items": ["Golang", "PHP", "Phoenix Framework"] }
+    ]
+  },
+
+  "experience": {
+    "eyebrow": "03 — Experience",
+    "heading": "14+ years, three domains.",
+    "roles": [
+      {
+        "title": "Senior Technical Lead — Software Architect track",
+        "company": "Coforge",
+        "meta": "Client: Emirates, Greater Noida",
+        "period": "Aug 2022 — Present",
+        "note": "Promoted from Technology Specialist",
+        "bullets": [
+          "Lead architecture and technical direction for large airline platforms (Emirates), guiding system design and a team of 7+ developers and QA engineers.",
+          "Led the move of a large monolithic booking platform (ResConnect) into smaller, independent services — splitting frontend and backend so each can be built and released on its own.",
+          "Designed domain-driven, stateful microservices for the Booking and Ancillary domains using Java 17 and Spring Boot.",
+          "Designed the API gateway and security setup, with one central place to check access tokens so services can talk to each other safely.",
+          "Used event-based messaging (Kafka & Solace) to pause and resume screen recording while payment details are entered — so sensitive information is never captured. Used Couchbase for fast, distributed data access.",
+          "Strengthened platform security by fixing vulnerability and penetration-test findings, and mentored engineers through design and code reviews."
+        ]
+      },
+      {
+        "title": "Senior Software Engineer",
+        "company": "Hindustan Times",
+        "meta": "",
+        "period": "Sep 2010 — Aug 2022",
+        "note": "",
+        "bullets": [
+          "Designed and delivered large content-publishing platforms, owning database design, backend services and search.",
+          "Built scalable REST APIs with Spring, Struts 2 and Hibernate; designed Apache Solr search with indexing and query optimization for high-volume content.",
+          "Engineered automated content-aggregation crawlers (Selenium) across 200+ sources and data pipelines for ingestion, transformation and delivery.",
+          "Developed CMS web interfaces with Vue.js and AngularJS; optimized MySQL queries and indexing for high-volume processing.",
+          "Led a small team, ensuring code quality, system stability and timely delivery."
+        ]
+      },
+      {
+        "title": "Executive — R&D",
+        "company": "Thomson Digital",
+        "meta": "Thomson Press (India) Ltd.",
+        "period": "Jun 2007 — Jul 2010",
+        "note": "",
+        "bullets": [
+          "Designed XML-based automation workflows for publishing systems, automating Adobe InDesign typesetting via the JavaScript SDK.",
+          "Built XML transformation pipelines using Java, XSLT and XPath, plus QA automation for validation and content-quality checks."
+        ]
+      }
+    ]
+  },
+
+  "projects": {
+    "eyebrow": "04 — Featured projects",
+    "heading": "Systems built to scale, secure & release.",
+    "intro": "14 projects across three companies plus a personal AI POC — from a multi-year airline microservices program to content automation at news scale, XML-driven publishing automation, and an agentic quote-processing platform. Each with a high-level architecture sketch.",
+    "groups": [
+      {
+        "label": "Personal · In progress",
+        "title": "QuoteAssist — AI Quote Processing",
+        "summary": "A self-directed POC exploring agentic AI, Elixir/OTP and event-driven design.",
+        "meta": "POC · 2025–26",
+        "compactCols": 2,
+        "items": [
+          {
+            "id": "quoteassist",
+            "variant": "flagship",
+            "chips": [
+              { "label": "POC · 2025–26", "accent": true },
+              { "label": "In progress" },
+              { "label": "AI-powered" }
+            ],
+            "name": "QuoteAssist",
+            "role": "Personal project · AI quote-processing platform",
+            "summary": "An AI platform that ingests travel quote requests from Outlook or web forms, extracts structured data, enforces corporate policies, generates pricing-ready JSON and drafts intelligent email replies — designed to self-improve and graduate trusted patterns to auto-send.",
+            "tags": ["Elixir", "Phoenix · LiveView", "OTP", "Python", "LLM / GenAI", "RAG", "React", "MS Graph API", "PostgreSQL"],
+            "featuresTitle": "Core capabilities",
+            "features": [
+              { "title": "Multi-channel ingestion", "desc": "Outlook Add-in, web forms and webhooks, normalised through one pipeline." },
+              { "title": "AI extraction + confidence scoring", "desc": "LLM parses free-form text into structured fields; low-confidence ones flag for human review." },
+              { "title": "Policy enforcement & smart drafts", "desc": "RAG-based corporate rules gate the quote; composes a response — or a targeted clarification email for missing fields." },
+              { "title": "Adaptive learning → auto-send", "desc": "Agent corrections become training signals; patterns graduate to auto-send, with a kill switch on confidence drop." }
+            ],
+            "diagram": { "type": "component", "ref": "quoteassist", "head": "High-level architecture — request flow · live" },
+            "direct": { "icon": "refresh", "text": "<b>Feedback loop</b> — agent corrections become labelled training signals that fine-tune the model and raise per-pattern confidence, graduating trusted patterns to auto-send." }
+          }
+        ]
+      },
+      {
+        "label": "Emirates · via Coforge",
+        "title": "Airline Agent Booking Platform — ResConnect",
+        "summary": "A multi-year program modernizing Emirates' agent booking system from a monolith into secured, independently deployable microservices.",
+        "meta": "6 projects",
+        "compactCols": 2,
+        "items": [
+          {
+            "id": "microservices-transformation",
+            "variant": "flagship",
+            "chips": [{ "label": "01 — Microservices · 2025–26" }],
+            "name": "Microservices Transformation",
+            "role": "Senior Technical Lead / Architect · Coforge",
+            "summary": "Contributing to the incremental decomposition of a legacy monolith booking system into microservices — scoped across four active modules with hands-on architecture and implementation.",
+            "tags": ["Java 17", "Spring Boot", "React", "REST APIs", "Oracle", "Couchbase", "SOAP → REST"],
+            "features": [
+              { "title": "Ancillary Services — Bags", "desc": "Designed and implemented UI and backend modules for Bags within the Ancillary Services domain, covering end-to-end feature delivery across the stack." },
+              { "title": "TIBCO → Wasola migration", "desc": "Migrated legacy SOAP-based TIBCO integrations to RESTful Wasola services by extracting transformation logic and orchestration into a dedicated microservice — enabling clean, incremental removal of the monolith without a big-bang rewrite." },
+              { "title": "Data layer optimisation", "desc": "Targeted optimisation of the data layer to improve query performance and throughput across transactional and distributed data stores." }
+            ],
+            "diagram": {
+              "type": "flow",
+              "flows": [
+                {
+                  "head": "High-level architecture — current (incremental decomposition)",
+                  "columns": [
+                    { "tag": "Client", "nodes": [{ "name": "Agent Web UI", "sub": "React · AngularJS" }] },
+                    { "tag": "Legacy core", "nodes": [{ "name": "Monolith", "sub": "Booking system" }] },
+                    { "tag": "Services", "nodes": [
+                      { "name": "TIBCO", "sub": "Legacy SOAP" },
+                      { "name": "Wasola", "sub": "REST services", "accent": true },
+                      { "name": "Booking Service", "sub": "Java 17 · Spring Boot", "accent": true },
+                      { "name": "Ancillary Service", "sub": "Java 17 · Spring Boot", "accent": true }
+                    ] },
+                    { "tag": "Data & messaging", "nodes": [
+                      { "name": "Oracle", "sub": "Transactional" },
+                      { "name": "Couchbase", "sub": "Distributed" },
+                      { "name": "Solace", "sub": "Event messaging", "accent": true }
+                    ] }
+                  ],
+                  "direct": { "icon": "link", "text": "Direct link — the <b>Monolith</b> (legacy core), <b>Booking Service</b> and <b>Ancillary Service</b> each connect straight to Oracle · Couchbase · Solace." }
+                },
+                {
+                  "head": "Target state",
+                  "columns": [
+                    { "tag": "Client", "nodes": [{ "name": "Agent Web UI", "sub": "React · AngularJS" }] },
+                    { "tag": "Edge", "nodes": [{ "name": "Spring Cloud Gateway", "sub": "Routing · Auth", "accent": true }] },
+                    { "tag": "Domain services", "nodes": [
+                      { "name": "Booking Service", "sub": "Java 17 · Spring Boot" },
+                      { "name": "Ancillary Service", "sub": "Java 17 · Spring Boot" }
+                    ] },
+                    { "tag": "Data & events", "nodes": [
+                      { "name": "Oracle", "sub": "Transactional" },
+                      { "name": "Couchbase", "sub": "Distributed" }
+                    ] }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "sidecar-auth",
+            "variant": "flagship",
+            "chips": [{ "label": "02 — Security · 2024–25" }],
+            "name": "Authentication — Access Token & Sidecar",
+            "role": "Software Architect · Coforge",
+            "summary": "Centralized authentication for the microservices platform — a token-validation service applied consistently to every service via the sidecar pattern.",
+            "tags": ["Java 17", "Spring API Gateway", "Azure AD", "JWT", "Spring Security", "Sidecar Pattern"],
+            "features": [
+              { "title": "Access-token validation service", "desc": "A dedicated microservice securing API access across the platform." },
+              { "title": "Sidecar pattern", "desc": "Consistent authentication attached to each service without duplicating auth logic." },
+              { "title": "Secure service-to-service", "desc": "Trusted communication between services in a distributed architecture." },
+              { "title": "Stronger enforcement", "desc": "Integrated with Azure AD (Spring Cloud Azure AD) and JWT for centralized, uniform security." }
+            ],
+            "diagram": { "type": "component", "ref": "sidecar", "head": "High-level architecture — sidecar auth · pod view" }
+          },
+          {
+            "id": "legacy-dev",
+            "variant": "compact",
+            "period": "Aug 2022 — Mar 2025",
+            "name": "Legacy Development & Enhancement",
+            "summary": "Feature development & production support on the high-traffic monolith — flight booking, agent workflows and ancillary services.",
+            "tags": ["Spring MVC", "AngularJS", "Oracle", "Couchbase"]
+          },
+          {
+            "id": "monolith-modularization",
+            "variant": "compact",
+            "period": "May 2023 — Mar 2025",
+            "name": "Monolith Modularization",
+            "summary": "Refactored the monolith into independent front-end and back-end repositories — a modular foundation for the microservices migration, retaining a single deployable.",
+            "tags": ["Java 17", "Spring Boot", "Modular Arch"]
+          },
+          {
+            "id": "rbac",
+            "variant": "compact",
+            "period": "Jan 2024 — Aug 2024",
+            "name": "Access Management — RBAC",
+            "summary": "Role-based access control across applications: role-location-permission mapping in Couchbase with a React.js admin UI for roles & permissions.",
+            "tags": ["Spring Boot", "React.js", "Couchbase", "RBAC"]
+          },
+          {
+            "id": "microfrontend-poc",
+            "variant": "compact",
+            "period": "May 2024 — Aug 2024",
+            "name": "UI Modernization — Microfrontend POC",
+            "summary": "Proof of concept modernizing the agent UI with a microfrontend architecture — modular UI for independent development, integrating AngularJS with React.",
+            "tags": ["Microfrontend", "AngularJS", "React.js"]
+          }
+        ]
+      },
+      {
+        "label": "Hindustan Times",
+        "title": "Content Platforms — Crawl, Search & Deliver",
+        "summary": "A decade building content automation, search and delivery systems operating at news scale.",
+        "meta": "5 projects",
+        "compactCols": 3,
+        "items": [
+          {
+            "id": "crawling-scraping",
+            "variant": "flagship",
+            "chips": [{ "label": "03 — Automation · 2017–21" }],
+            "name": "UI-Based Auto Crawling & Scraping Platform",
+            "role": "Senior Software Engineer · Hindustan Times",
+            "summary": "An end-to-end content automation platform — crawl, scrape, template and deliver articles across the full writer, QA and client review lifecycle.",
+            "tags": ["Java", "Spring Boot", "Vue.js", "Quasar", "Selenium", "HTMLUnit", "FTP", "RSS"],
+            "features": [
+              { "title": "Four integrated systems", "desc": "Configuration management, crawling & scraping, article templating and delivery — working as one workflow." },
+              { "title": "Rule-driven configuration", "desc": "Define per-site scraping rules with CSS selectors and XPath (Spring Boot, Vue.js, Quasar)." },
+              { "title": "Crawling & scraping engine", "desc": "Selenium and HTMLUnit extracting structured data from websites." },
+              { "title": "Templating & delivery", "desc": "Transform raw data into structured content, then distribute via FTP and RSS." }
+            ],
+            "diagram": {
+              "type": "flow",
+              "flows": [
+                {
+                  "head": "High-level architecture — four subsystems",
+                  "columns": [
+                    { "tag": "Configure", "nodes": [{ "name": "Configuration Mgmt", "sub": "CSS · XPath rules", "accent": true }] },
+                    { "tag": "Crawl", "nodes": [{ "name": "Scraping Engine", "sub": "Selenium · HTMLUnit" }] },
+                    { "tag": "Template", "nodes": [{ "name": "Article Templating", "sub": "Structuring" }] },
+                    { "tag": "Review", "nodes": [{ "name": "Writer · QA · Client", "sub": "Review lifecycle" }] },
+                    { "tag": "Deliver", "nodes": [{ "name": "Delivery System", "sub": "FTP · RSS", "accent": true }] }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "hts-portal",
+            "variant": "flagship",
+            "chips": [{ "label": "04 — Content platform · 2012–14" }],
+            "name": "HTS Portal — Large-Scale Content & Search",
+            "role": "Software Engineer · Hindustan Times",
+            "summary": "A content platform managing millions of articles and images across multiple publications, with high-volume daily ingestion and fast search.",
+            "tags": ["Java", "Spring", "Struts 2", "Hibernate", "MySQL", "Apache Solr", "Bootstrap", "FTP"],
+            "features": [
+              { "title": "Application architecture", "desc": "Spring DI, Struts 2 (MVC) and Hibernate ORM, with a Bootstrap web interface." },
+              { "title": "Ingestion pipeline", "desc": "Fetch articles and images from FTP and store them with metadata." },
+              { "title": "Solr search", "desc": "Indexing, filtering and high-performance query execution at scale." },
+              { "title": "MySQL tuning", "desc": "Optimized queries and indexing to improve response time and scalability." }
+            ],
+            "diagram": {
+              "type": "flow",
+              "flows": [
+                {
+                  "head": "High-level architecture",
+                  "columns": [
+                    { "tag": "Source", "nodes": [{ "name": "FTP Feeds", "sub": "Articles · images" }] },
+                    { "tag": "Ingestion", "nodes": [{ "name": "Ingestion Pipeline", "sub": "Metadata store" }] },
+                    { "tag": "Core", "nodes": [{ "name": "App Layer", "sub": "Struts 2 · Spring · Hibernate" }] },
+                    { "tag": "Index & store", "nodes": [
+                      { "name": "Apache Solr", "sub": "Search index", "accent": true },
+                      { "name": "MySQL", "sub": "Content store" }
+                    ] },
+                    { "tag": "UI", "nodes": [{ "name": "Bootstrap Portal", "sub": "Browse · search" }] }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "newzza",
+            "variant": "compact",
+            "period": "Feb 2015 — Dec 2015",
+            "name": "NewZZa Mobile Backend",
+            "summary": "REST backend serving articles & media to mobile apps, with Solr-indexed retrieval and filtering.",
+            "tags": ["Spring MVC", "Hibernate", "Solr", "MySQL"]
+          },
+          {
+            "id": "nms-rss-delivery",
+            "variant": "compact",
+            "period": "May 2016 — Jul 2016",
+            "name": "NMS — Article Delivery via RSS",
+            "summary": "Configuration-driven RSS delivery for external clients, with secure Basic-Auth endpoints and dynamic feeds.",
+            "tags": ["Vue.js", "Quasar", "Spring", "RSS"]
+          },
+          {
+            "id": "nms-rss-splitter",
+            "variant": "compact",
+            "period": "Mar 2016 — Apr 2016",
+            "name": "NMS — RSS Splitter",
+            "summary": "Spring Boot console app parsing and splitting RSS feeds into category feeds on a schedule, with per-feed limits.",
+            "tags": ["Spring Boot", "JDOM", "Scheduler"]
+          }
+        ]
+      },
+      {
+        "label": "Thomson Digital & earlier",
+        "title": "Publishing Automation & Systems",
+        "summary": "Where it started — automating typesetting from XML, and building real-world systems end to end.",
+        "meta": "2 projects",
+        "compactCols": 2,
+        "items": [
+          {
+            "id": "indesign-pagination",
+            "variant": "flagship",
+            "chips": [{ "label": "05 — R&D · 2008–10" }],
+            "name": "Adobe InDesign Auto Pagination",
+            "role": "R&D · Thomson Digital",
+            "summary": "An XML-driven pagination workflow built from scratch to automate InDesign typesetting for publishers like Elsevier and Pearson, each with their own XML DTDs.",
+            "tags": ["Java", "XML", "XSLT", "XPath", "InDesign JS SDK"],
+            "features": [
+              { "title": "Auto pagination (80–90%)", "desc": "Automation scripts auto-fill and typeset pages up to 80–90% using the InDesign JavaScript SDK." },
+              { "title": "XML→XML transformation", "desc": "Transformation engine built with Java, XSLT and XPath against publisher DTDs." },
+              { "title": "Full layout automation", "desc": "Auto table & image placement, bookmarking, linking, XML-out and index-page generation." },
+              { "title": "Workflow integration", "desc": "Integrated the automation scripts into the InDesign production workflow." }
+            ],
+            "diagram": {
+              "type": "flow",
+              "flows": [
+                {
+                  "head": "High-level architecture",
+                  "columns": [
+                    { "tag": "Input", "nodes": [{ "name": "Publisher XML", "sub": "Elsevier · Pearson DTDs" }] },
+                    { "tag": "Transform", "nodes": [{ "name": "XSLT / XPath", "sub": "Java engine" }] },
+                    { "tag": "Typeset", "nodes": [{ "name": "InDesign JS SDK", "sub": "80–90% auto", "accent": true }] },
+                    { "tag": "Automate", "nodes": [{ "name": "Layout Engine", "sub": "Tables · images · index" }] },
+                    { "tag": "Output", "nodes": [{ "name": "Paginated Pages", "sub": "+ XML out" }] }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "kiosk",
+            "variant": "compact",
+            "period": "Side project",
+            "name": "Centralised Kiosk Display & Ad Management",
+            "summary": "Scheduled advertisement display on Linux-based kiosks with an ad-wallet — debit on a successful play, refund on failure. Deployed at Rajasthan bus terminals and malls.",
+            "tags": ["Vue.js", "PHP", "Laravel", "MySQL", "Redis"]
+          }
+        ]
+      }
+    ]
+  },
+
+  "achievements": {
+    "eyebrow": "05 — Key achievements",
+    "heading": "Recognized impact.",
+    "items": [
+      { "n": "01", "title": "Zero-impact TIBCO → Wasola migration", "desc": "Migrated stateless services using a microservices + feature-flag strategy with no system downtime — recognized by the client." },
+      { "n": "02", "title": "Monolith → Microservices transformation", "desc": "Led a step-by-step shift from one large application to smaller services, shaping the service design the whole platform was built on." },
+      { "n": "03", "title": "AI-assisted delivery", "desc": "Adopted AI tooling for unit-test generation and legacy-code comprehension, measurably improving delivery efficiency." }
+    ]
+  },
+
+  "education": {
+    "eyebrow": "06 — Education",
+    "heading": "Foundations.",
+    "items": [
+      { "degree": "B.Sc. in Computer Science", "school": "Sikkim Manipal University", "icon": "cap" },
+      { "degree": "Diploma in Information Technology", "school": "Board of Technical Education, Uttar Pradesh", "icon": "doc" }
+    ],
+    "nowLabel": "Currently",
+    "now": "Architecting and implementing image offload for Dnata Travel (via Coforge) — migrating binary assets from SQL Server BLOB columns to Azure Blob Storage, building .NET APIs for zero-downtime cutover and dual-read compatibility."
+  },
+
+  "testimonials": []
+}

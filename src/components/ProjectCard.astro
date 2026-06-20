@@ -1,0 +1,80 @@
+---
+import ArchFlow from "./ArchFlow.astro";
+import QuoteAssistDiagram from "./QuoteAssistDiagram.astro";
+import SidecarDiagram from "./SidecarDiagram.astro";
+
+interface Props {
+  item: any;
+  delay?: number;
+}
+const { item, delay = 0 } = Astro.props;
+const accentChipStyle =
+  "color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)";
+---
+
+{item.variant === "compact" ? (
+  <div class="card card-hover p-6 flex flex-col" data-reveal style={`--reveal-delay:${delay}ms`}>
+    <div class="font-mono text-[11px] tracking-wider text-[var(--text-muted)] mb-2.5">{item.period}</div>
+    <h4 class="font-display font-bold text-[var(--text)] text-[1.05rem] leading-snug">{item.name}</h4>
+    <p class="text-sm text-[var(--text-muted)] mt-2 leading-snug flex-1">{item.summary}</p>
+    <div class="flex flex-wrap gap-1.5 mt-4">
+      {item.tags.map((t: string) => <span class="chip">{t}</span>)}
+    </div>
+  </div>
+) : (
+  <article class="card overflow-hidden" data-reveal>
+    <div class="grid lg:grid-cols-[1fr_1.3fr]">
+      <div class="p-8 sm:p-10 border-b lg:border-b-0 lg:border-r border-[var(--border)] bg-[var(--surface-2)]">
+        {item.chips.length === 1 ? (
+          <span class="chip mb-5" style={item.chips[0].accent ? accentChipStyle : undefined}>{item.chips[0].label}</span>
+        ) : (
+          <div class="flex flex-wrap gap-2 mb-5">
+            {item.chips.map((c: any) => (
+              <span class="chip" style={c.accent ? accentChipStyle : undefined}>{c.label}</span>
+            ))}
+          </div>
+        )}
+        <h3 class="font-display font-bold text-2xl text-[var(--text)] leading-tight">{item.name}</h3>
+        <p class="text-sm text-[var(--accent)] font-semibold mt-2">{item.role}</p>
+        <p class="text-[var(--text-muted)] leading-relaxed mt-4">{item.summary}</p>
+        <div class="flex flex-wrap gap-2 mt-6">
+          {item.tags.map((t: string) => <span class="chip">{t}</span>)}
+        </div>
+      </div>
+      <div class="p-8 sm:p-10">
+        <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--text-muted)] mb-5">{item.featuresTitle ?? "Features & contributions"}</div>
+        <ul class="space-y-4">
+          {item.features.map((f: any) => (
+            <li>
+              <div class="font-semibold text-[var(--text)]">{f.title}</div>
+              <p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">{f.desc}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="arch-band">
+      {item.diagram.type === "flow" ? (
+        <ArchFlow flows={item.diagram.flows} />
+      ) : (
+        <>
+          <div class="arch-band-head">{item.diagram.head}</div>
+          {item.diagram.ref === "quoteassist" && <QuoteAssistDiagram />}
+          {item.diagram.ref === "sidecar" && <SidecarDiagram />}
+        </>
+      )}
+
+      {item.direct && (
+        <div class="arch-direct">
+          {item.direct.icon === "refresh" ? (
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9M3 12l3-3M3 12l3 3"/></svg>
+          ) : (
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6a2 2 0 0 1 2-2h6M9 18H6a2 2 0 0 0-2 2M9 18a2 2 0 0 0 2 2h6M17 4l3 0M17 4l0 3M14 20l3 0M14 20l0-3"/></svg>
+          )}
+          <span set:html={item.direct.text}></span>
+        </div>
+      )}
+    </div>
+  </article>
+)}

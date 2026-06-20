@@ -1,0 +1,28 @@
+{
+  "name": "vivek-kumar-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Vivek Kumar — Software Architect portfolio. Astro v6 + Tailwind 4, fully static.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^6"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4",
+    "tailwindcss": "^4",
+    "vite": "^7"
+  },
+  "overrides": {
+    "vite": "^7"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

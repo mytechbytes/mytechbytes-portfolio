@@ -1,0 +1,67 @@
+{
+  "name": "Vivek Kumar",
+  "monogram": "VK",
+  "navSubtitle": "Software Architect",
+  "role": "Senior Technical Lead",
+  "track": "Software Architect track",
+  "tagline": "Senior Technical Lead · Software Architect track",
+  "availability": "Available for architecture & engineering leadership",
+  "heroBio": "I turn big monolithic systems into smaller, independent services — shaping how they talk to each other and building in security and scale from the start. <span class=\"text-[var(--text)] font-semibold\">14+ years</span> across airline, media and publishing domains.",
+  "locationShort": "Ghaziabad, India",
+  "location": "Ghaziabad, Uttar Pradesh, India",
+  "email": "viveksingh0143@gmail.com",
+  "resume": "/Vivek-Kumar-Resume.pdf",
+  "socials": [
+    { "label": "LinkedIn", "url": "https://linkedin.com/in/viveksingh0143" }
+  ],
+  "nav": [
+    { "label": "About", "href": "#about" },
+    { "label": "Skills", "href": "#skills" },
+    { "label": "Experience", "href": "#experience" },
+    { "label": "Projects", "href": "#projects" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "cta": { "label": "Get in touch", "href": "#contact" },
+  "heroPrimary": { "label": "View projects", "href": "#projects" },
+  "stats": [
+    { "value": "14", "suffix": "+", "label": "Years of experience" },
+    { "value": "3", "suffix": "", "label": "Industry domains" },
+    { "value": "7", "suffix": "+", "label": "Engineers led" },
+    { "value": "0", "suffix": "", "label": "Downtime migrations" }
+  ],
+  "terminal": {
+    "filename": "architect.profile.json",
+    "fields": [
+      { "key": "role", "value": "Senior Technical Lead", "type": "string" },
+      { "key": "track", "value": "Software Architect", "type": "string" },
+      { "key": "experience", "value": "14", "type": "number" },
+      { "key": "focus", "value": ["microservices", "event-driven", "micro-frontends", "distributed-systems"], "type": "array" },
+      { "key": "stack", "value": "Java 17 · Spring · Couchbase", "type": "string" },
+      { "key": "frontend", "value": "React · AngularJS · Vue", "type": "string" },
+      { "key": "status", "value": "shipping", "type": "string", "cursor": true }
+    ]
+  },
+  "contact": {
+    "eyebrow": "07 — Contact",
+    "heading": "Let's build something",
+    "headingAccent": "that scales.",
+    "blurb": "Open to architecture leadership, system-design challenges and engineering mentorship. The fastest way to reach me is email."
+  },
+  "footer": {
+    "tagline": "Designed & engineered with responsibility",
+    "links": [
+      { "label": "Email", "type": "email" },
+      { "label": "LinkedIn", "type": "social", "ref": "LinkedIn" },
+      { "label": "Résumé", "type": "resume" },
+      { "label": "Top ↑", "type": "anchor", "href": "#top" }
+    ]
+  },
+  "seo": {
+    "title": "Vivek Kumar — Software Architect & Principal Engineer",
+    "description": "Vivek Kumar — Software Architect / Principal Engineer with 14+ years building large-scale distributed systems across airline, media and publishing domains.",
+    "ogImage": "/og.png"
+  },
+  "fonts": {
+    "googleHref": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+  }
+}

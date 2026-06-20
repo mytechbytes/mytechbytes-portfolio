@@ -1,0 +1,96 @@
+---
+// Sidecar authentication — Kubernetes pod-view diagram.
+// Bespoke hand-tuned SVG (extracted from the original design).
+---
+
+                <div class="arch-svg">
+                  <svg viewBox="0 0 980 520" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sidecar authentication pattern — Kubernetes pod view">
+                    <defs>
+                      <marker id="sc-ag" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L9,3.5 z" fill="#30a46c"/></marker>
+                      <marker id="sc-ab" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L9,3.5 z" fill="#388bfd"/></marker>
+                      <marker id="sc-ar" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L9,3.5 z" fill="#f85149"/></marker>
+                      <marker id="sc-ay" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L9,3.5 z" fill="#e3b341"/></marker>
+                    </defs>
+                    <rect width="980" height="520" fill="#0d1117" rx="12"/>
+                    <text x="24" y="30" font-family="Segoe UI,sans-serif" font-size="10" fill="#30a46c" font-weight="700" letter-spacing="2">HIGH-LEVEL ARCHITECTURE · SIDECAR AUTH PATTERN — POD VIEW</text>
+
+                    <rect x="24" y="190" width="110" height="80" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+                    <text x="79" y="213" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle" font-weight="700" letter-spacing="1">CLIENT</text>
+                    <text x="79" y="233" font-family="Segoe UI,sans-serif" font-size="13" fill="#e6edf3" text-anchor="middle" font-weight="700">Web / Mobile</text>
+                    <text x="79" y="252" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Bearer Token (JWT)</text>
+
+                    <line x1="134" y1="230" x2="184" y2="230" stroke="#388bfd" stroke-width="2" marker-end="url(#sc-ab)"/>
+                    <text x="159" y="222" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#388bfd" text-anchor="middle" font-weight="600">HTTPS</text>
+                    <text x="159" y="244" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#388bfd" text-anchor="middle" opacity=".6">→ Pod</text>
+
+                    <rect x="188" y="55" width="700" height="400" rx="14" fill="#131008" stroke="#e3b341" stroke-width="2.5"/>
+                    <rect x="296" y="44" width="100" height="20" rx="10" fill="#e3b341"/>
+                    <text x="346" y="58" font-family="Segoe UI,sans-serif" font-size="9" fill="#0d1117" text-anchor="middle" font-weight="700" letter-spacing="1">☸ K8S POD</text>
+
+                    <rect x="204" y="80" width="232" height="360" rx="12" fill="#0d1f33" stroke="#388bfd" stroke-width="2" stroke-dasharray="7,4"/>
+                    <rect x="270" y="69" width="100" height="18" rx="9" fill="#388bfd"/>
+                    <text x="320" y="81" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#fff" text-anchor="middle" font-weight="700" letter-spacing="1">SIDECAR</text>
+
+                    <rect x="220" y="100" width="200" height="68" rx="8" fill="#1c2a3a" stroke="#388bfd" stroke-width="1.5"/>
+                    <text x="320" y="123" font-family="Segoe UI,sans-serif" font-size="11.5" fill="#79c0ff" text-anchor="middle" font-weight="700">Spring Cloud Gateway</text>
+                    <text x="320" y="141" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Request Interception · Routing</text>
+                    <text x="320" y="157" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Filter Chain</text>
+
+                    <line x1="320" y1="168" x2="320" y2="196" stroke="#388bfd" stroke-width="1.5" marker-end="url(#sc-ab)"/>
+
+                    <rect x="220" y="200" width="200" height="68" rx="8" fill="#1a1f2e" stroke="#a371f7" stroke-width="1.5"/>
+                    <text x="320" y="223" font-family="Segoe UI,sans-serif" font-size="11.5" fill="#d2a8ff" text-anchor="middle" font-weight="700">Azure AD</text>
+                    <text x="320" y="241" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Token Validation · JWKS</text>
+                    <text x="320" y="257" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Introspection Endpoint</text>
+
+                    <line x1="320" y1="268" x2="320" y2="296" stroke="#388bfd" stroke-width="1.5" marker-end="url(#sc-ab)"/>
+
+                    <rect x="220" y="300" width="200" height="68" rx="8" fill="#1c2a1c" stroke="#30a46c" stroke-width="1.5"/>
+                    <text x="320" y="323" font-family="Segoe UI,sans-serif" font-size="11.5" fill="#7ee787" text-anchor="middle" font-weight="700">Spring Security</text>
+                    <text x="320" y="341" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Claims Extraction · Role Enforcement</text>
+                    <text x="320" y="357" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">SecurityContextHolder</text>
+
+                    <line x1="420" y1="334" x2="454" y2="334" stroke="#e3b341" stroke-width="2" marker-end="url(#sc-ay)"/>
+                    <polygon points="490,298 526,334 490,370 454,334" fill="#1c1f26" stroke="#e3b341" stroke-width="2"/>
+                    <text x="490" y="330" font-family="Segoe UI,sans-serif" font-size="9" fill="#e3b341" text-anchor="middle" font-weight="700">Token</text>
+                    <text x="490" y="343" font-family="Segoe UI,sans-serif" font-size="9" fill="#e3b341" text-anchor="middle" font-weight="700">Valid?</text>
+
+                    <rect x="560" y="80" width="310" height="360" rx="12" fill="#0d1f15" stroke="#30a46c" stroke-width="2"/>
+                    <rect x="655" y="69" width="120" height="18" rx="9" fill="#30a46c"/>
+                    <text x="715" y="81" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#fff" text-anchor="middle" font-weight="700" letter-spacing="1">APP CONTAINER</text>
+
+                    <rect x="585" y="155" width="260" height="80" rx="10" fill="#161b22" stroke="#30a46c" stroke-width="1.5"/>
+                    <text x="715" y="180" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle" font-weight="700" letter-spacing="1">MICROSERVICE</text>
+                    <text x="715" y="200" font-family="Segoe UI,sans-serif" font-size="14" fill="#e6edf3" text-anchor="middle" font-weight="700">Spring Boot Service</text>
+                    <text x="715" y="220" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Java 17 · REST APIs</text>
+
+                    <text x="715" y="262" font-family="Segoe UI,sans-serif" font-size="9" fill="#444" text-anchor="middle" font-weight="700">— OR —</text>
+
+                    <rect x="585" y="272" width="260" height="80" rx="10" fill="#161b22" stroke="#444" stroke-width="1.5" stroke-dasharray="5,3"/>
+                    <text x="715" y="297" font-family="Segoe UI,sans-serif" font-size="9" fill="#555" text-anchor="middle" font-weight="700" letter-spacing="1">LEGACY · MONOLITH</text>
+                    <text x="715" y="317" font-family="Segoe UI,sans-serif" font-size="14" fill="#8b949e" text-anchor="middle" font-weight="700">Monolith App</text>
+                    <text x="715" y="337" font-family="Segoe UI,sans-serif" font-size="9" fill="#555" text-anchor="middle">Incremental removal in progress</text>
+
+                    <polyline points="526,334 548,334 548,195 585,195" fill="none" stroke="#30a46c" stroke-width="2" marker-end="url(#sc-ag)"/>
+                    <text x="550" y="220" font-family="Segoe UI,sans-serif" font-size="9" fill="#30a46c" font-weight="700" text-anchor="middle">✓ VALID</text>
+
+                    <line x1="715" y1="235" x2="715" y2="272" stroke="#444" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+                    <polyline points="490,370 490,440 490,470" fill="none" stroke="#f85149" stroke-width="2" marker-end="url(#sc-ar)"/>
+                    <text x="504" y="430" font-family="Segoe UI,sans-serif" font-size="9" fill="#f85149" font-weight="700">✗ INVALID</text>
+
+                    <rect x="390" y="472" width="200" height="32" rx="8" fill="#1f0d0d" stroke="#f85149" stroke-width="1.5"/>
+                    <text x="490" y="491" font-family="Segoe UI,sans-serif" font-size="11" fill="#f85149" text-anchor="middle" font-weight="700">401 Unauthorized — Request Blocked</text>
+
+                    <circle cx="24" cy="512" r="5" fill="#e3b341"/>
+                    <text x="34" y="516" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e">Kubernetes Pod</text>
+                    <circle cx="140" cy="512" r="5" fill="#388bfd"/>
+                    <text x="150" y="516" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e">Sidecar Container</text>
+                    <circle cx="268" cy="512" r="5" fill="#30a46c"/>
+                    <text x="278" y="516" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e">Valid token path</text>
+                    <circle cx="380" cy="512" r="5" fill="#f85149"/>
+                    <text x="390" y="516" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e">Blocked — 401 (no upstream call)</text>
+                    <circle cx="556" cy="512" r="5" fill="#a371f7"/>
+                    <text x="566" y="516" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e">Azure AD — external token authority</text>
+                  </svg>
+                </div>

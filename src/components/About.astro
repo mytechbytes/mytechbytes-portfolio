@@ -1,0 +1,31 @@
+---
+import portfolio from "../data/portfolio.json";
+const a = portfolio.about;
+---
+
+<section id="about" class="py-24 sm:py-28 relative">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[.8fr_1.2fr] gap-12 lg:gap-20">
+    <div data-reveal="left">
+      <p class="eyebrow mb-5">{a.eyebrow}</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text)] leading-tight">
+        {a.heading}
+      </h2>
+    </div>
+    <div data-reveal="right">
+      {a.paragraphs.map((p, i) => (
+        <p class={i === 0
+          ? "text-lg sm:text-xl text-[var(--text-soft)] leading-relaxed"
+          : "text-lg text-[var(--text-muted)] leading-relaxed mt-5"}>{p}</p>
+      ))}
+
+      <div class="grid sm:grid-cols-3 gap-3 mt-9">
+        {a.roleCards.map((c) => (
+          <div class="card p-5">
+            <div class="font-display font-bold text-[var(--accent)] text-lg mb-1">{c.title}</div>
+            <p class="text-sm text-[var(--text-muted)] leading-snug">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

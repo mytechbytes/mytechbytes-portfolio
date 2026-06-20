@@ -1,0 +1,84 @@
+---
+import site from "../data/site.json";
+import themes from "../data/themes.json";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = site.seo.title, description = site.seo.description } = Astro.props;
+const defaultName = themes.default;
+
+/* Build :root + html[data-theme="…"] token blocks from themes.json,
+   so the runtime palette is fully data-driven. */
+function block(selector: string, tokens: Record<string, string>): string {
+  const decls = Object.entries(tokens)
+    .map(([k, v]) => `  --${k}: ${v};`)
+    .join("\n");
+  return `${selector} {\n${decls}\n}`;
+}
+
+const themeEntries = Object.entries(
+  themes.themes as Record<string, { tokens: Record<string, string> }>
+);
+const defaultTokens = themes.themes[defaultName as keyof typeof themes.themes].tokens;
+const themeCss = [
+  block(":root", defaultTokens),
+  ...themeEntries.map(([name, t]) => block(`html[data-theme="${name}"]`, t.tokens)),
+].join("\n");
+---
+
+<!doctype html>
+<html lang="en" data-theme={defaultName}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {site.seo.ogImage && <meta property="og:image" content={site.seo.ogImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href={site.fonts.googleHref} rel="stylesheet" />
+
+    <!-- Runtime theme tokens (generated from themes.json) -->
+    <style is:inline set:html={themeCss}></style>
+
+    <!-- Apply persisted / preferred theme before first paint (no flash) -->
+    <script
+      is:inline
+      define:vars={{ storageKey: themes.storageKey, defaultName }}
+    >
+      (function () {
+        try {
+          var stored = localStorage.getItem(storageKey);
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", defaultName);
+        }
+      })();
+    </script>
+  </head>
+
+  <body class="font-sans antialiased">
+    <slot />
+
+    <script>
+      import "../scripts/ui.js";
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+---
+import site from "../data/site.json";
+const c = site.contact;
+const linkedin = site.socials.find((s) => s.label === "LinkedIn");
+---
+
+<section id="contact" class="py-24 sm:py-32 relative overflow-hidden">
+  <div class="bg-grid absolute inset-0 -z-10"></div>
+  <div class="glow w-[520px] h-[520px] top-0 left-1/2 -translate-x-1/2 opacity-60"></div>
+  <div class="max-w-3xl mx-auto px-5 sm:px-8 text-center relative" data-reveal>
+    <p class="eyebrow justify-center mb-6" style="--reveal-delay:0">{c.eyebrow}</p>
+    <h2 class="font-display font-bold text-4xl sm:text-5xl tracking-tight text-[var(--text)] leading-[1.05]">
+      {c.heading} <span class="text-gradient">{c.headingAccent}</span>
+    </h2>
+    <p class="text-lg text-[var(--text-soft)] mt-6 max-w-xl mx-auto leading-relaxed">{c.blurb}</p>
+    <div class="flex flex-wrap items-center justify-center gap-3 mt-10">
+      <a href={`mailto:${site.email}`} class="btn btn-primary !px-6 !py-3.5">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        {site.email}
+      </a>
+      {linkedin && (
+        <a href={linkedin.url} target="_blank" rel="noopener" class="btn btn-ghost !px-6 !py-3.5">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          {linkedin.label}
+        </a>
+      )}
+      <a href={site.resume} target="_blank" rel="noopener" class="btn btn-ghost !px-6 !py-3.5">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        View Resume
+      </a>
+    </div>
+    <p class="font-mono text-sm text-[var(--text-muted)] mt-8">{site.location}</p>
+  </div>
+</section>

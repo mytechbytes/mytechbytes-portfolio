@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vivek Kumar — Software Architect &amp; Principal Engineer</title>
+  <meta name="description" content="Vivek Kumar — Software Architect / Principal Engineer with 14+ years building large-scale distributed systems across airline, media and publishing domains." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind 4 (browser build) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @custom-variant dark (&:where(.dark, .dark *));
+    @theme {
+      --font-display: "Space Grotesk", system-ui, sans-serif;
+      --font-sans: "Manrope", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+  </style>
+
+  <!-- Custom styles (separate) -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="font-sans antialiased">
+
+  <!-- ============ NAV ============ -->
+  <header id="nav" class="nav-shell fixed top-0 inset-x-0 z-50">
+    <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-[72px] flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3 group">
+        <span class="monogram w-10 h-10 rounded-xl grid place-items-center text-lg">VK</span>
+        <span class="hidden sm:flex flex-col leading-tight">
+          <span class="font-display font-bold text-[15px] tracking-tight text-[var(--text)]">Vivek Kumar</span>
+          <span class="font-mono text-[10px] tracking-[.18em] uppercase text-[var(--text-muted)]">Software Architect</span>
+        </span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+
+      <div class="flex items-center gap-2.5">
+        <a href="#contact" class="btn btn-primary hidden sm:inline-flex !py-2.5 !px-4 !text-sm">Get in touch</a>
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle color theme">
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <button id="burger" class="theme-toggle md:hidden" aria-label="Open menu" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- mobile menu -->
+    <div id="mobile-menu" class="mobile-menu md:hidden border-t border-[var(--border)] bg-[var(--surface)]">
+      <div class="px-6 py-4 flex flex-col gap-1">
+        <a href="#about" class="nav-link !text-base py-2.5">About</a>
+        <a href="#skills" class="nav-link !text-base py-2.5">Skills</a>
+        <a href="#experience" class="nav-link !text-base py-2.5">Experience</a>
+        <a href="#projects" class="nav-link !text-base py-2.5">Projects</a>
+        <a href="#contact" class="nav-link !text-base py-2.5">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="relative pt-36 pb-24 sm:pt-44 sm:pb-32 overflow-hidden">
+      <div class="bg-grid absolute inset-0 -z-10"></div>
+      <div class="glow w-[460px] h-[460px] -top-24 -left-24"></div>
+      <div class="glow w-[380px] h-[380px] top-10 right-0 opacity-60"></div>
+
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[1.15fr_.85fr] gap-14 items-center relative">
+        <div>
+          <p class="eyebrow mb-6" data-reveal>Available for architecture &amp; engineering leadership</p>
+          <h1 class="font-display font-bold tracking-tight text-[var(--text)] leading-[1.02] text-[2.7rem] sm:text-6xl lg:text-[4.3rem]" data-reveal style="--reveal-delay:60ms">
+            Vivek Kumar
+          </h1>
+          <p class="font-display text-xl sm:text-2xl mt-3 text-gradient font-semibold" data-reveal style="--reveal-delay:120ms">
+            Senior Technical Lead &middot; Software Architect track
+          </p>
+          <p class="mt-7 text-[var(--text-soft)] text-lg leading-relaxed max-w-xl" data-reveal style="--reveal-delay:180ms">
+            I turn big monolithic systems into smaller, independent services — shaping how they
+            talk to each other and building in security and scale from the start.
+            <span class="text-[var(--text)] font-semibold">14+ years</span> across airline,
+            media and publishing domains.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 mt-9" data-reveal style="--reveal-delay:240ms">
+            <a href="#projects" class="btn btn-primary">
+              View projects
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="Vivek-Kumar-Resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              View Resume
+            </a>
+            <a href="mailto:viveksingh0143@gmail.com" class="btn btn-ghost">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+              Email me
+            </a>
+            <a href="https://linkedin.com/in/viveksingh0143" target="_blank" rel="noopener" class="btn btn-ghost">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-9 text-sm text-[var(--text-muted)] font-mono" data-reveal style="--reveal-delay:300ms">
+            <span class="inline-flex items-center gap-2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Ghaziabad, India
+            </span>
+          </div>
+        </div>
+
+        <!-- terminal card -->
+        <div data-reveal="scale" style="--reveal-delay:200ms">
+          <div class="terminal">
+            <div class="terminal-head">
+              <span class="dot" style="background:#ff5f57"></span>
+              <span class="dot" style="background:#febc2e"></span>
+              <span class="dot" style="background:#28c840"></span>
+              <span class="ml-2 text-[var(--text-muted)] text-xs">architect.profile.json</span>
+            </div>
+            <div class="p-5 leading-relaxed">
+              <div class="term-line"><span class="term-mut">{</span></div>
+              <div class="term-line">&nbsp;&nbsp;<span class="term-key">"role"</span>: <span class="term-str">"Senior Technical Lead"</span>,</div>
+              <div class="term-line">&nbsp;&nbsp;<span class="term-key">"track"</span>: <span class="term-str">"Software Architect"</span>,</div>
+              <div class="term-line">&nbsp;&nbsp;<span class="term-key">"experience"</span>: <span class="term-num">14</span>,</div>
+              <div class="term-line">&nbsp;&nbsp;<span class="term-key">"focus"</span>: [</div>
+              <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-str">"microservices"</span>,</div>
+              <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-str">"event-driven"</span>,</div>
+              <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-str">"micro-frontends"</span>,</div>
+              <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="term-str">"distributed-systems"</span></div>
+              <div class="term-line">&nbsp;&nbsp;],</div>
+              <div class="term-line">&nbsp;&nbsp;<span class="term-key">"stack"</span>: <span class="term-str">"Java 17 · Spring · Couchbase"</span>,</div>
+              <div class="term-line">&nbsp;&nbsp;<span class="term-key">"frontend"</span>: <span class="term-str">"React · AngularJS · Vue"</span>,</div>
+              <div class="term-line">&nbsp;&nbsp;<span class="term-key">"status"</span>: <span class="term-str">"shipping"</span> <span class="cursor-blink"></span></div>
+              <div class="term-line"><span class="term-mut">}</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- stats strip -->
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 mt-20">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--border)]" data-reveal>
+          <div class="bg-[var(--surface)] px-6 py-7 text-center sm:text-left">
+            <div class="font-display font-bold text-3xl sm:text-4xl text-[var(--text)]">14<span class="text-[var(--accent)]">+</span></div>
+            <div class="text-sm text-[var(--text-muted)] mt-1">Years of experience</div>
+          </div>
+          <div class="bg-[var(--surface)] px-6 py-7 text-center sm:text-left">
+            <div class="font-display font-bold text-3xl sm:text-4xl text-[var(--text)]">3</div>
+            <div class="text-sm text-[var(--text-muted)] mt-1">Industry domains</div>
+          </div>
+          <div class="bg-[var(--surface)] px-6 py-7 text-center sm:text-left">
+            <div class="font-display font-bold text-3xl sm:text-4xl text-[var(--text)]">7<span class="text-[var(--accent)]">+</span></div>
+            <div class="text-sm text-[var(--text-muted)] mt-1">Engineers led</div>
+          </div>
+          <div class="bg-[var(--surface)] px-6 py-7 text-center sm:text-left">
+            <div class="font-display font-bold text-3xl sm:text-4xl text-[var(--text)]">0</div>
+            <div class="text-sm text-[var(--text-muted)] mt-1">Downtime migrations</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="py-24 sm:py-28 relative">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[.8fr_1.2fr] gap-12 lg:gap-20">
+        <div data-reveal="left">
+          <p class="eyebrow mb-5">01 — About</p>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text)] leading-tight">
+            Setting technical direction, then making it ship.
+          </h2>
+        </div>
+        <div data-reveal="right">
+          <p class="text-lg sm:text-xl text-[var(--text-soft)] leading-relaxed">
+            I'm a software architect and engineering leader who breaks big monolithic applications
+            into smaller, independent services, shapes how systems talk to each other, and builds in
+            security and scale from the start.
+          </p>
+          <p class="text-lg text-[var(--text-muted)] leading-relaxed mt-5">
+            I'm known for setting technical direction, mentoring teams through design and code reviews,
+            and turning complex business needs into simple, maintainable solutions — most recently
+            leading architecture for large airline platforms at Emirates.
+          </p>
+
+          <div class="grid sm:grid-cols-3 gap-3 mt-9">
+            <div class="card p-5">
+              <div class="font-display font-bold text-[var(--accent)] text-lg mb-1">Architect</div>
+              <p class="text-sm text-[var(--text-muted)] leading-snug">System design, scalability &amp; service boundaries</p>
+            </div>
+            <div class="card p-5">
+              <div class="font-display font-bold text-[var(--accent)] text-lg mb-1">Leader</div>
+              <p class="text-sm text-[var(--text-muted)] leading-snug">Mentoring, design reviews &amp; technical direction</p>
+            </div>
+            <div class="card p-5">
+              <div class="font-display font-bold text-[var(--accent)] text-lg mb-1">Builder</div>
+              <p class="text-sm text-[var(--text-muted)] leading-snug">Hands-on across backend, frontend &amp; data</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" class="py-24 sm:py-28 relative overflow-hidden">
+      <div class="glow w-[420px] h-[420px] bottom-0 -right-32 opacity-50"></div>
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 relative">
+        <div class="max-w-2xl mb-14" data-reveal>
+          <p class="eyebrow mb-5">02 — Core competencies</p>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text)] leading-tight">
+            A full-stack architect's toolkit.
+          </h2>
+        </div>
+
+        <div class="grid lg:grid-cols-[.95fr_1.05fr] gap-10 lg:gap-16">
+          <!-- signature bars -->
+          <div class="card p-7 sm:p-9" data-reveal="left">
+            <h3 class="font-display font-semibold text-lg text-[var(--text)] mb-7 flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-[var(--accent)]"></span> Signature strengths
+            </h3>
+            <div class="skill-row">
+              <div class="flex justify-between mb-2 text-sm"><span class="font-semibold text-[var(--text)]">Microservices &amp; System Design</span><span class="font-mono text-[var(--text-muted)]">95%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-level="95"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="flex justify-between mb-2 text-sm"><span class="font-semibold text-[var(--text)]">Java 17 &amp; Spring Boot</span><span class="font-mono text-[var(--text-muted)]">95%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-level="95"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="flex justify-between mb-2 text-sm"><span class="font-semibold text-[var(--text)]">Event-Driven Architecture</span><span class="font-mono text-[var(--text-muted)]">90%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-level="90"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="flex justify-between mb-2 text-sm"><span class="font-semibold text-[var(--text)]">Kafka &amp; Solace Messaging</span><span class="font-mono text-[var(--text-muted)]">88%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-level="88"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="flex justify-between mb-2 text-sm"><span class="font-semibold text-[var(--text)]">Frontend &amp; Micro-frontends</span><span class="font-mono text-[var(--text-muted)]">82%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-level="82"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="flex justify-between mb-2 text-sm"><span class="font-semibold text-[var(--text)]">Security &amp; VAPT Remediation</span><span class="font-mono text-[var(--text-muted)]">85%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-level="85"></div></div>
+            </div>
+          </div>
+
+          <!-- category chip groups -->
+          <div class="space-y-6">
+            <div class="card p-6 sm:p-7 card-hover" data-reveal="right">
+              <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--accent)] mb-4">Architecture &amp; Design</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="chip">Microservices</span><span class="chip">Event-Driven</span><span class="chip">Distributed Systems</span><span class="chip">Domain-Driven Design</span><span class="chip">API Gateway</span><span class="chip">Sidecar Pattern</span><span class="chip">System Design</span>
+              </div>
+            </div>
+            <div class="card p-6 sm:p-7 card-hover" data-reveal="right" style="--reveal-delay:80ms">
+              <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--accent)] mb-4">Backend</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="chip">Java 17</span><span class="chip">Spring Boot</span><span class="chip">Spring Cloud</span><span class="chip">Hibernate</span><span class="chip">Struts 2</span><span class="chip">REST APIs</span>
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div class="card p-6 sm:p-7 card-hover" data-reveal="right" style="--reveal-delay:120ms">
+                <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--accent)] mb-4">Frontend</div>
+                <div class="flex flex-wrap gap-2">
+                  <span class="chip">AngularJS</span><span class="chip">React.js</span><span class="chip">Vue.js</span><span class="chip">Module Federation</span><span class="chip">Webpack</span>
+                </div>
+              </div>
+              <div class="card p-6 sm:p-7 card-hover" data-reveal="right" style="--reveal-delay:160ms">
+                <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--accent)] mb-4">Messaging &amp; Data</div>
+                <div class="flex flex-wrap gap-2">
+                  <span class="chip">Apache Kafka</span><span class="chip">Solace PubSub+</span><span class="chip">Couchbase</span><span class="chip">Oracle</span><span class="chip">MySQL</span><span class="chip">Apache Solr</span>
+                </div>
+              </div>
+            </div>
+            <div class="card p-6 sm:p-7 card-hover" data-reveal="right" style="--reveal-delay:200ms">
+              <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--accent)] mb-4">Platform &amp; Practice</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="chip">Token-based Auth</span><span class="chip">CI/CD</span><span class="chip">Jenkins</span><span class="chip">Git</span><span class="chip">VAPT / PT</span><span class="chip">Agile / Scrum</span><span class="chip">Mentoring</span>
+              </div>
+            </div>
+            <div class="card p-6 sm:p-7 card-hover" data-reveal="right" style="--reveal-delay:240ms">
+              <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--accent)] mb-4">Also / Add-on</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="chip">Golang</span><span class="chip">PHP</span><span class="chip">Phoenix Framework</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section id="experience" class="py-24 sm:py-28 relative">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="max-w-2xl mb-14" data-reveal>
+          <p class="eyebrow mb-5">03 — Experience</p>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text)] leading-tight">
+            14+ years, three domains.
+          </h2>
+        </div>
+
+        <div class="timeline pl-12 md:pl-16 space-y-12">
+
+          <!-- Coforge -->
+          <article class="relative" data-reveal>
+            <span class="tl-node"></span>
+            <div class="card p-7 sm:p-8 card-hover">
+              <div class="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <h3 class="font-display font-bold text-xl text-[var(--text)]">Senior Technical Lead — Software Architect track</h3>
+                  <p class="text-[var(--accent)] font-semibold mt-1">Coforge <span class="divider-dot">·</span> <span class="text-[var(--text-muted)] font-medium">Client: Emirates, Greater Noida</span></p>
+                </div>
+                <span class="chip shrink-0">Aug 2022 — Present</span>
+              </div>
+              <p class="text-sm text-[var(--text-muted)] mt-2 italic">Promoted from Technology Specialist</p>
+              <ul class="mt-5 space-y-3 text-[var(--text-soft)] leading-relaxed">
+                <li class="flex gap-3"><span class="text-[var(--accent)] mt-1.5 shrink-0">▹</span>Lead architecture and technical direction for large airline platforms (Emirates), guiding system design and a team of 7+ developers and QA engineers.</li>
+                <li class="flex gap-3"><span class="text-[var(--accent)] mt-1.5 shrink-0">▹</span>Led the move of a large monolithic booking platform (ResConnect) into smaller, independent services — splitting frontend and backend so each can be built and released on its own.</li>
+                <li class="flex gap-3"><span class="text-[var(--accent)] mt-1.5 shrink-0">▹</span>Designed domain-driven, stateful microservices for the Booking and Ancillary domains using Java 17 and Spring Boot.</li>
+                <li class="flex gap-3"><span class="text-[var(--accent)] mt-1.5 shrink-0">▹</span>Designed the API gateway and security setup, with one central place to check access tokens so services can talk to each other safely.</li>
+                <li class="flex gap-3"><span class="text-[var(--accent)] mt-1.5 shrink-0">▹</span>Used event-based messaging (Kafka &amp; Solace) to pause and resume screen recording while payment details are entered — so sensitive information is never captured. Used Couchbase for fast, distributed data access.</li>
+                <li class="flex gap-3"><span class="text-[var(--accent)] mt-1.5 shrink-0">▹</span>Strengthened platform security by fixing vulnerability and penetration-test findings, and mentored engineers through design and code reviews.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Hindustan Times -->
+          <article class="relative" data-reveal>
+            <span class="tl-node"></span>
+            <div class="card p-7 sm:p-8 card-hover">
+              <div class="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <h3 class="font-display font-bold text-xl text-[var(--text)]">Senior Software Engineer</h3>
+                  <p class="text-[var(--accent)] font-semibold mt-1">Hindustan Times</p>
+                </div>
+                <span class="chip shrink-0">Sep 2010 — Aug 2022</span>
+              </div>
+              <ul class="mt-5 space-y-3 text-[var(--text-soft)] leading-relaxed">
+                <li class="flex gap-3"><span class="text-[var(--accent)] mt-1.5 shrink-0">▹</span>Designed and delivered large content-publishing platforms, owning database design, backend services and search.</li>
+                <li class="flex gap-3"><span class="text-[var(--accent)] mt-1.5 shrink-0">▹</span>Built scalable REST APIs with Spring, Struts 2 and Hibernate; designed Apache Solr search with indexing and query optimization for high-volume content.</li>
+                <li class="flex gap-3"><span class="text-[var(--accent)] mt-1.5 shrink-0">▹</span>Engineered automated content-aggregation crawlers (Selenium) across 200+ sources and data pipelines for ingestion, transformation and delivery.</li>
+                <li class="flex gap-3"><span class="text-[var(--accent)] mt-1.5 shrink-0">▹</span>Developed CMS web interfaces with Vue.js and AngularJS; optimized MySQL queries and indexing for high-volume processing.</li>
+                <li class="flex gap-3"><span class="text-[var(--accent)] mt-1.5 shrink-0">▹</span>Led a small team, ensuring code quality, system stability and timely delivery.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Thomson -->
+          <article class="relative" data-reveal>
+            <span class="tl-node"></span>
+            <div class="card p-7 sm:p-8 card-hover">
+              <div class="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <h3 class="font-display font-bold text-xl text-[var(--text)]">Executive — R&amp;D</h3>
+                  <p class="text-[var(--accent)] font-semibold mt-1">Thomson Digital <span class="divider-dot">·</span> <span class="text-[var(--text-muted)] font-medium">Thomson Press (India) Ltd.</span></p>
+                </div>
+                <span class="chip shrink-0">Jun 2007 — Jul 2010</span>
+              </div>
+              <ul class="mt-5 space-y-3 text-[var(--text-soft)] leading-relaxed">
+                <li class="flex gap-3"><span class="text-[var(--accent)] mt-1.5 shrink-0">▹</span>Designed XML-based automation workflows for publishing systems, automating Adobe InDesign typesetting via the JavaScript SDK.</li>
+                <li class="flex gap-3"><span class="text-[var(--accent)] mt-1.5 shrink-0">▹</span>Built XML transformation pipelines using Java, XSLT and XPath, plus QA automation for validation and content-quality checks.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="py-24 sm:py-28 relative overflow-hidden">
+      <div class="glow w-[460px] h-[460px] top-20 -left-40 opacity-50"></div>
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 relative">
+        <div class="max-w-2xl mb-14" data-reveal>
+          <p class="eyebrow mb-5">04 — Featured projects</p>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text)] leading-tight">
+            Systems built to scale, secure &amp; release.
+          </h2>
+          <p class="text-[var(--text-muted)] leading-relaxed mt-5 text-lg">
+            14 projects across three companies plus a personal AI POC — from a multi-year airline
+            microservices program to content automation at news scale, XML-driven publishing
+            automation, and an agentic quote-processing platform. Each with a high-level
+            architecture sketch.
+          </p>
+        </div>
+
+        <div class="space-y-7">
+
+          <!-- ===== GROUP: Personal · In progress ===== -->
+          <div class="space-y-6">
+            <div class="flex items-end justify-between gap-4" data-reveal>
+              <div>
+                <div class="eyebrow mb-3">Personal · In progress</div>
+                <h3 class="font-display font-bold text-2xl sm:text-[1.7rem] text-[var(--text)] tracking-tight leading-tight">QuoteAssist — AI Quote Processing</h3>
+                <p class="text-[var(--text-muted)] mt-2 max-w-xl leading-relaxed">A self-directed POC exploring agentic AI, Elixir/OTP and event-driven design.</p>
+              </div>
+              <span class="font-mono text-xs text-[var(--text-muted)] hidden md:block shrink-0">POC · 2025–26</span>
+            </div>
+
+            <article class="card overflow-hidden" data-reveal>
+              <div class="grid lg:grid-cols-[1fr_1.3fr]">
+                <div class="p-8 sm:p-10 border-b lg:border-b-0 lg:border-r border-[var(--border)] bg-[var(--surface-2)]">
+                  <div class="flex flex-wrap gap-2 mb-5">
+                    <span class="chip" style="color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)">POC · 2025–26</span>
+                    <span class="chip">In progress</span>
+                    <span class="chip">AI-powered</span>
+                  </div>
+                  <h3 class="font-display font-bold text-2xl text-[var(--text)] leading-tight">QuoteAssist</h3>
+                  <p class="text-sm text-[var(--accent)] font-semibold mt-2">Personal project · AI quote-processing platform</p>
+                  <p class="text-[var(--text-muted)] leading-relaxed mt-4">
+                    An AI platform that ingests travel quote requests from Outlook or web forms,
+                    extracts structured data, enforces corporate policies, generates pricing-ready
+                    JSON and drafts intelligent email replies — designed to self-improve and
+                    graduate trusted patterns to auto-send.
+                  </p>
+                  <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="chip">Elixir</span><span class="chip">Phoenix · LiveView</span><span class="chip">OTP</span><span class="chip">Python</span><span class="chip">LLM / GenAI</span><span class="chip">RAG</span><span class="chip">React</span><span class="chip">MS Graph API</span><span class="chip">PostgreSQL</span>
+                  </div>
+                </div>
+                <div class="p-8 sm:p-10">
+                  <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--text-muted)] mb-5">Core capabilities</div>
+                  <ul class="space-y-4">
+                    <li><div class="font-semibold text-[var(--text)]">Multi-channel ingestion</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Outlook Add-in, web forms and webhooks, normalised through one pipeline.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">AI extraction + confidence scoring</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">LLM parses free-form text into structured fields; low-confidence ones flag for human review.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">Policy enforcement &amp; smart drafts</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">RAG-based corporate rules gate the quote; composes a response — or a targeted clarification email for missing fields.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">Adaptive learning → auto-send</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Agent corrections become training signals; patterns graduate to auto-send, with a kill switch on confidence drop.</p></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="arch-band">
+                <div class="arch-band-head">High-level architecture — request flow · live</div>
+                <div id="qa-flow-label" class="qa-flow-label">Auto-playing request flow…</div>
+                <div class="arch-svg">
+                  <svg id="archSvg" viewBox="0 0 1020 620" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QuoteAssist request flow architecture">
+                    <defs>
+                      <marker id="qa-mg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#30a46c"/></marker>
+                      <marker id="qa-mb" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#388bfd"/></marker>
+                      <marker id="qa-mp" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#a371f7"/></marker>
+                      <marker id="qa-my" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#e3b341"/></marker>
+                      <marker id="qa-mr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#f85149"/></marker>
+                      <marker id="qa-mo" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#f0883e"/></marker>
+                      <filter id="qa-glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                    </defs>
+                    <rect width="1020" height="620" fill="#0d1117" rx="10"/>
+
+                    <text x="60" y="22" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#555" font-weight="700" letter-spacing="1.5" text-anchor="middle">INGESTION</text>
+                    <text x="240" y="22" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#555" font-weight="700" letter-spacing="1.5" text-anchor="middle">QUEUE</text>
+                    <text x="410" y="22" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#555" font-weight="700" letter-spacing="1.5" text-anchor="middle">ORCHESTRATOR</text>
+                    <text x="620" y="22" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#555" font-weight="700" letter-spacing="1.5" text-anchor="middle">AI ENGINE</text>
+                    <text x="870" y="22" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#555" font-weight="700" letter-spacing="1.5" text-anchor="middle">OUTPUT</text>
+
+                    <rect x="14" y="34" width="94" height="58" rx="8" fill="#1c2a3a" stroke="#388bfd" stroke-width="1.5"/>
+                    <text x="61" y="56" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#79c0ff" text-anchor="middle" font-weight="700">Outlook</text>
+                    <text x="61" y="70" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">MS Add-in</text>
+                    <text x="61" y="83" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Graph API</text>
+
+                    <rect x="14" y="110" width="94" height="58" rx="8" fill="#1c2a3a" stroke="#388bfd" stroke-width="1.5"/>
+                    <text x="61" y="132" font-family="Segoe UI,sans-serif" font-size="10.5" fill="#79c0ff" text-anchor="middle" font-weight="700">Web Form</text>
+                    <text x="61" y="146" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Phoenix</text>
+                    <text x="61" y="159" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">LiveView</text>
+
+                    <rect x="14" y="186" width="94" height="46" rx="8" fill="#1a1f2e" stroke="#30363d" stroke-width="1.2" stroke-dasharray="4,3"/>
+                    <text x="61" y="206" font-family="Segoe UI,sans-serif" font-size="10" fill="#555" text-anchor="middle" font-weight="700">Webhook</text>
+                    <text x="61" y="222" font-family="Segoe UI,sans-serif" font-size="8" fill="#444" text-anchor="middle">Extensible</text>
+
+                    <line id="la1" x1="108" y1="63" x2="174" y2="120" stroke="#388bfd" stroke-width="1.5" marker-end="url(#qa-mb)" opacity="0.2"/>
+                    <line id="la2" x1="108" y1="139" x2="174" y2="130" stroke="#388bfd" stroke-width="1.5" marker-end="url(#qa-mb)" opacity="0.2"/>
+                    <line id="la3" x1="108" y1="209" x2="174" y2="140" stroke="#30363d" stroke-width="1.2" marker-end="url(#qa-mb)" opacity="0.2" stroke-dasharray="4,3"/>
+
+                    <rect x="176" y="34" width="124" height="200" rx="10" fill="#131a23" stroke="#388bfd" stroke-width="1.8"/>
+                    <rect x="216" y="24" width="44" height="16" rx="8" fill="#388bfd"/>
+                    <text x="238" y="35" font-family="Segoe UI,sans-serif" font-size="7.5" fill="#fff" text-anchor="middle" font-weight="700" letter-spacing="1">QUEUE</text>
+                    <text x="238" y="62" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle" font-weight="700">Elixir / OTP</text>
+                    <rect x="190" y="70" width="98" height="20" rx="4" fill="#1c2a3a" stroke="#388bfd" stroke-width="1" opacity="0.9"/>
+                    <text x="239" y="84" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#79c0ff" text-anchor="middle">msg #1 — pending</text>
+                    <rect x="190" y="96" width="98" height="20" rx="4" fill="#1c2a3a" stroke="#388bfd" stroke-width="1" opacity="0.7"/>
+                    <text x="239" y="110" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#79c0ff" text-anchor="middle">msg #2 — pending</text>
+                    <rect x="190" y="122" width="98" height="20" rx="4" fill="#1c2a3a" stroke="#388bfd" stroke-width="1" opacity="0.5"/>
+                    <text x="239" y="136" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#555" text-anchor="middle">msg #3 — queued</text>
+                    <rect x="190" y="148" width="98" height="20" rx="4" fill="#131a23" stroke="#30363d" stroke-width="1" opacity="0.4"/>
+                    <text x="239" y="162" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#444" text-anchor="middle">msg #4 — queued</text>
+                    <text x="238" y="195" font-family="Segoe UI,sans-serif" font-size="8" fill="#555" text-anchor="middle">Oban / GenServer</text>
+                    <text x="238" y="208" font-family="Segoe UI,sans-serif" font-size="8" fill="#555" text-anchor="middle">Retry · DLQ · Priority</text>
+                    <text x="238" y="221" font-family="Segoe UI,sans-serif" font-size="8" fill="#555" text-anchor="middle">Backpressure control</text>
+
+                    <line id="la4" x1="300" y1="134" x2="330" y2="200" stroke="#388bfd" stroke-width="1.5" marker-end="url(#qa-mb)" opacity="0.2"/>
+
+                    <rect x="332" y="160" width="148" height="148" rx="10" fill="#1c2a1c" stroke="#30a46c" stroke-width="2"/>
+                    <text x="406" y="183" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#8b949e" text-anchor="middle" font-weight="700" letter-spacing="1">ORCHESTRATOR</text>
+                    <text x="406" y="200" font-family="Segoe UI,sans-serif" font-size="11.5" fill="#7ee787" text-anchor="middle" font-weight="700">Phoenix / Elixir</text>
+                    <rect x="344" y="208" width="124" height="18" rx="4" fill="#0d1f15" stroke="#30a46c" stroke-width="1" opacity="0.8"/>
+                    <text x="406" y="221" font-family="Segoe UI,sans-serif" font-size="8" fill="#7ee787" text-anchor="middle">Context · State machine</text>
+                    <rect x="344" y="230" width="124" height="18" rx="4" fill="#0d1f15" stroke="#30a46c" stroke-width="1" opacity="0.8"/>
+                    <text x="406" y="243" font-family="Segoe UI,sans-serif" font-size="8" fill="#7ee787" text-anchor="middle">Multi-tenant routing</text>
+                    <rect x="344" y="252" width="124" height="18" rx="4" fill="#0d1f15" stroke="#30a46c" stroke-width="1" opacity="0.8"/>
+                    <text x="406" y="265" font-family="Segoe UI,sans-serif" font-size="8" fill="#7ee787" text-anchor="middle">Policy config loader</text>
+                    <rect x="344" y="274" width="124" height="18" rx="4" fill="#0d1f15" stroke="#30a46c" stroke-width="1" opacity="0.8"/>
+                    <text x="406" y="287" font-family="Segoe UI,sans-serif" font-size="8" fill="#7ee787" text-anchor="middle">Audit logger</text>
+
+                    <line id="la5" x1="480" y1="234" x2="520" y2="180" stroke="#30a46c" stroke-width="1.5" marker-end="url(#qa-mg)" opacity="0.2"/>
+
+                    <rect x="522" y="34" width="220" height="450" rx="12" fill="#130f1f" stroke="#a371f7" stroke-width="2"/>
+                    <rect x="572" y="23" width="100" height="16" rx="8" fill="#a371f7"/>
+                    <text x="622" y="34" font-family="Segoe UI,sans-serif" font-size="8" fill="#fff" text-anchor="middle" font-weight="700" letter-spacing="1">PYTHON AI ENGINE</text>
+
+                    <rect x="534" y="50" width="196" height="72" rx="8" fill="#1f1635" stroke="#a371f7" stroke-width="1.3"/>
+                    <text x="632" y="68" font-family="Segoe UI,sans-serif" font-size="10" fill="#d2a8ff" text-anchor="middle" font-weight="700">1. Quote Extraction</text>
+                    <text x="632" y="83" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">LLM parsing · NLP · Field detection</text>
+                    <text x="632" y="96" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Itineraries · Services · Pax count</text>
+                    <text x="632" y="109" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Confidence score per field</text>
+
+                    <line id="lf1" x1="534" y1="86" x2="488" y2="86" stroke="#f85149" stroke-width="1.5" marker-end="url(#qa-mr)" opacity="0.15" stroke-dasharray="4,3"/>
+                    <text x="511" y="79" font-family="Segoe UI,sans-serif" font-size="7.5" fill="#f85149" text-anchor="middle" font-weight="700">extract fail</text>
+                    <text x="632" y="136" font-family="Segoe UI,sans-serif" font-size="11" fill="#333" text-anchor="middle">↓</text>
+
+                    <rect x="534" y="142" width="196" height="62" rx="8" fill="#1f1635" stroke="#e3b341" stroke-width="1.3"/>
+                    <text x="632" y="160" font-family="Segoe UI,sans-serif" font-size="10" fill="#e3b341" text-anchor="middle" font-weight="700">2. Confidence Gate</text>
+                    <text x="632" y="175" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Score &lt; threshold → human review</text>
+                    <text x="632" y="188" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Score ≥ threshold → continue</text>
+                    <text x="632" y="200" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Auto-send graduation check</text>
+
+                    <line id="lf2" x1="534" y1="170" x2="488" y2="340" stroke="#e3b341" stroke-width="1.3" marker-end="url(#qa-my)" opacity="0.15" stroke-dasharray="4,3"/>
+                    <text x="632" y="218" font-family="Segoe UI,sans-serif" font-size="11" fill="#333" text-anchor="middle">↓</text>
+
+                    <rect x="534" y="224" width="196" height="62" rx="8" fill="#1f1635" stroke="#a371f7" stroke-width="1.3"/>
+                    <text x="632" y="242" font-family="Segoe UI,sans-serif" font-size="10" fill="#d2a8ff" text-anchor="middle" font-weight="700">3. Missing Data Detection</text>
+                    <text x="632" y="257" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Gap analysis on required fields</text>
+                    <text x="632" y="270" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Triggers clarification draft</text>
+                    <text x="632" y="283" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Suspends downstream flow</text>
+                    <text x="632" y="300" font-family="Segoe UI,sans-serif" font-size="11" fill="#333" text-anchor="middle">↓</text>
+
+                    <rect x="534" y="306" width="196" height="62" rx="8" fill="#1f1635" stroke="#f0883e" stroke-width="1.3"/>
+                    <text x="632" y="324" font-family="Segoe UI,sans-serif" font-size="10" fill="#f0883e" text-anchor="middle" font-weight="700">4. Policy Enforcement</text>
+                    <text x="632" y="339" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Fare class · Supplier mandate</text>
+                    <text x="632" y="352" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Budget threshold · RAG rules</text>
+                    <text x="632" y="365" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Breach → reject / escalate</text>
+
+                    <line id="lf3" x1="534" y1="337" x2="488" y2="460" stroke="#f85149" stroke-width="1.5" marker-end="url(#qa-mr)" opacity="0.15" stroke-dasharray="4,3"/>
+                    <text x="632" y="382" font-family="Segoe UI,sans-serif" font-size="11" fill="#333" text-anchor="middle">↓</text>
+
+                    <rect x="534" y="388" width="196" height="62" rx="8" fill="#1f1635" stroke="#a371f7" stroke-width="1.3"/>
+                    <text x="632" y="406" font-family="Segoe UI,sans-serif" font-size="10" fill="#d2a8ff" text-anchor="middle" font-weight="700">5. Draft Generation</text>
+                    <text x="632" y="421" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Response email · Template engine</text>
+                    <text x="632" y="434" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Locale · Tenant branding</text>
+                    <text x="632" y="447" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">JSON schema for pricing</text>
+
+                    <line id="la6" x1="742" y1="80" x2="808" y2="58" stroke="#a371f7" stroke-width="1.5" marker-end="url(#qa-mp)" opacity="0.2"/>
+                    <line id="la7" x1="742" y1="200" x2="808" y2="150" stroke="#388bfd" stroke-width="1.5" marker-end="url(#qa-mb)" opacity="0.2"/>
+                    <line id="la8" x1="742" y1="260" x2="808" y2="232" stroke="#e3b341" stroke-width="1.5" marker-end="url(#qa-my)" opacity="0.2"/>
+                    <line id="la9" x1="742" y1="420" x2="808" y2="310" stroke="#30a46c" stroke-width="1.5" marker-end="url(#qa-mg)" opacity="0.2"/>
+
+                    <rect x="810" y="34" width="190" height="68" rx="8" fill="#1c2a1c" stroke="#30a46c" stroke-width="1.5"/>
+                    <text x="905" y="54" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#7ee787" text-anchor="middle" font-weight="700">Pricing Service</text>
+                    <text x="905" y="69" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Predefined JSON schema</text>
+                    <text x="905" y="82" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Downstream API · Zero reformatting</text>
+                    <text x="905" y="95" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Single / multi itinerary</text>
+
+                    <rect x="810" y="118" width="190" height="62" rx="8" fill="#1c2a3a" stroke="#388bfd" stroke-width="1.5"/>
+                    <text x="905" y="138" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#79c0ff" text-anchor="middle" font-weight="700">Draft Response Email</text>
+                    <text x="905" y="153" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Quote details to client</text>
+                    <text x="905" y="166" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Via Outlook / channel</text>
+                    <text x="905" y="179" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Agent review or auto-send</text>
+
+                    <rect x="810" y="196" width="190" height="62" rx="8" fill="#1f1810" stroke="#e3b341" stroke-width="1.5"/>
+                    <text x="905" y="216" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#e3b341" text-anchor="middle" font-weight="700">Clarification Mail</text>
+                    <text x="905" y="231" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Missing fields only</text>
+                    <text x="905" y="244" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Targeted · Auto-drafted</text>
+                    <text x="905" y="257" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Suspends until reply</text>
+
+                    <rect x="810" y="274" width="190" height="62" rx="8" fill="#1f1508" stroke="#f0883e" stroke-width="1.5"/>
+                    <text x="905" y="294" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#f0883e" text-anchor="middle" font-weight="700">Approval Workflow</text>
+                    <text x="905" y="309" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">High-value / out-of-policy</text>
+                    <text x="905" y="322" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Configurable approval chain</text>
+                    <text x="905" y="335" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Human gate before send</text>
+
+                    <rect x="350" y="60" width="132" height="52" rx="8" fill="#1f0d0d" stroke="#f85149" stroke-width="1.5"/>
+                    <text x="416" y="80" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#f85149" text-anchor="middle" font-weight="700">Dead Letter Queue</text>
+                    <text x="416" y="95" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Extraction fail · Retry exhausted</text>
+                    <text x="416" y="108" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Alert · Manual intervention</text>
+
+                    <rect x="350" y="310" width="132" height="52" rx="8" fill="#1f1810" stroke="#e3b341" stroke-width="1.5"/>
+                    <text x="416" y="330" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#e3b341" text-anchor="middle" font-weight="700">Human Review</text>
+                    <text x="416" y="345" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Low confidence fields</text>
+                    <text x="416" y="358" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Agent correction → signal</text>
+
+                    <rect x="350" y="432" width="132" height="52" rx="8" fill="#1f0d0d" stroke="#f85149" stroke-width="1.5"/>
+                    <text x="416" y="452" font-family="Segoe UI,sans-serif" font-size="9.5" fill="#f85149" text-anchor="middle" font-weight="700">Policy Rejected</text>
+                    <text x="416" y="467" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Breach logged · Client notified</text>
+                    <text x="416" y="480" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Compliance audit trail</text>
+
+                    <rect x="332" y="530" width="620" height="64" rx="10" fill="#131008" stroke="#e3b341" stroke-width="1.5" stroke-dasharray="5,3"/>
+                    <text x="642" y="550" font-family="Segoe UI,sans-serif" font-size="9" fill="#e3b341" text-anchor="middle" font-weight="700" letter-spacing="1.5">ADAPTIVE LEARNING — FEEDBACK LOOP</text>
+                    <text x="642" y="566" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#8b949e" text-anchor="middle">Agent corrections → labelled training signals → model fine-tuning → confidence threshold registry → auto-send graduation per pattern</text>
+                    <text x="642" y="582" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#555" text-anchor="middle">Kill switch reverts any pattern to human review on confidence drop or policy breach · Full audit trail mandatory before auto-send</text>
+
+                    <line id="lfb1" x1="416" y1="362" x2="416" y2="528" stroke="#e3b341" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#qa-my)" opacity="0.2"/>
+                    <line id="lfb2" x1="622" y1="530" x2="622" y2="450" stroke="#e3b341" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#qa-my)" opacity="0.2"/>
+                    <line id="lfb3" x1="406" y1="530" x2="406" y2="308" stroke="#e3b341" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#qa-my)" opacity="0.2"/>
+
+                    <rect x="858" y="370" width="150" height="100" rx="8" fill="#1c2128" stroke="#30363d" stroke-width="1.5"/>
+                    <text x="933" y="392" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#8b949e" text-anchor="middle" font-weight="700" letter-spacing="1">PERSISTENCE</text>
+                    <text x="933" y="410" font-family="Segoe UI,sans-serif" font-size="11" fill="#e6edf3" text-anchor="middle" font-weight="700">PostgreSQL</text>
+                    <text x="933" y="426" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Quotes · Audit logs</text>
+                    <text x="933" y="440" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Training signals</text>
+                    <text x="933" y="454" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Tenant config · SLA data</text>
+                    <text x="933" y="466" font-family="Segoe UI,sans-serif" font-size="8" fill="#8b949e" text-anchor="middle">Version history</text>
+                    <line x1="858" y1="420" x2="808" y2="350" stroke="#30363d" stroke-width="1" stroke-dasharray="3,3"/>
+
+                    <circle id="animDot" cx="-50" cy="-50" r="7" fill="#fff" filter="url(#qa-glow)" opacity="0"/>
+
+                    <circle cx="14" cy="608" r="4" fill="#388bfd"/><text x="22" y="612" font-family="Segoe UI,sans-serif" font-size="8" fill="#555">Ingestion</text>
+                    <circle cx="80" cy="608" r="4" fill="#30a46c"/><text x="88" y="612" font-family="Segoe UI,sans-serif" font-size="8" fill="#555">Orchestration</text>
+                    <circle cx="170" cy="608" r="4" fill="#a371f7"/><text x="178" y="612" font-family="Segoe UI,sans-serif" font-size="8" fill="#555">AI Processing</text>
+                    <circle cx="260" cy="608" r="4" fill="#e3b341"/><text x="268" y="612" font-family="Segoe UI,sans-serif" font-size="8" fill="#555">Feedback / Learning</text>
+                    <circle cx="380" cy="608" r="4" fill="#f85149"/><text x="388" y="612" font-family="Segoe UI,sans-serif" font-size="8" fill="#555">Failure / Rejection</text>
+                    <circle cx="460" cy="608" r="4" fill="#f0883e"/><text x="468" y="612" font-family="Segoe UI,sans-serif" font-size="8" fill="#555">Approval</text>
+                  </svg>
+                </div>
+                <div class="arch-direct">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9M3 12l3-3M3 12l3 3"/></svg>
+                  <span><b>Feedback loop</b> — agent corrections become labelled training signals that fine-tune the model and raise per-pattern confidence, graduating trusted patterns to auto-send.</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- ===== GROUP: Emirates / Coforge ===== -->
+          <div class="space-y-6 border-t border-[var(--border)] pt-14">
+            <div class="flex items-end justify-between gap-4" data-reveal>
+              <div>
+                <div class="eyebrow mb-3">Emirates · via Coforge</div>
+                <h3 class="font-display font-bold text-2xl sm:text-[1.7rem] text-[var(--text)] tracking-tight leading-tight">Airline Agent Booking Platform — ResConnect</h3>
+                <p class="text-[var(--text-muted)] mt-2 max-w-xl leading-relaxed">A multi-year program modernizing Emirates' agent booking system from a monolith into secured, independently deployable microservices.</p>
+              </div>
+              <span class="font-mono text-xs text-[var(--text-muted)] hidden md:block shrink-0">6 projects</span>
+            </div>
+
+            <!-- Flagship: Microservices Transformation -->
+            <article class="card overflow-hidden" data-reveal>
+              <div class="grid lg:grid-cols-[1fr_1.3fr]">
+                <div class="p-8 sm:p-10 border-b lg:border-b-0 lg:border-r border-[var(--border)] bg-[var(--surface-2)]">
+                  <span class="chip mb-5">01 — Microservices · 2025–26</span>
+                  <h3 class="font-display font-bold text-2xl text-[var(--text)] leading-tight">Microservices Transformation</h3>
+                  <p class="text-sm text-[var(--accent)] font-semibold mt-2">Senior Technical Lead / Architect · Coforge</p>
+                  <p class="text-[var(--text-muted)] leading-relaxed mt-4">
+                    Contributing to the incremental decomposition of a legacy monolith booking system
+                    into microservices — scoped across four active modules with hands-on architecture
+                    and implementation.
+                  </p>
+                  <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="chip">Java 17</span><span class="chip">Spring Boot</span><span class="chip">React</span><span class="chip">REST APIs</span><span class="chip">Oracle</span><span class="chip">Couchbase</span><span class="chip">SOAP → REST</span>
+                  </div>
+                </div>
+                <div class="p-8 sm:p-10">
+                  <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--text-muted)] mb-5">Features &amp; contributions</div>
+                  <ul class="space-y-4">
+                    <li><div class="font-semibold text-[var(--text)]">Ancillary Services — Bags</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Designed and implemented UI and backend modules for Bags within the Ancillary Services domain, covering end-to-end feature delivery across the stack.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">TIBCO → Wasola migration</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Migrated legacy SOAP-based TIBCO integrations to RESTful Wasola services by extracting transformation logic and orchestration into a dedicated microservice — enabling clean, incremental removal of the monolith without a big-bang rewrite.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">Data layer optimisation</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Targeted optimisation of the data layer to improve query performance and throughput across transactional and distributed data stores.</p></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="arch-band">
+                <div class="arch-band-head">High-level architecture — current (incremental decomposition)</div>
+                <div class="arch">
+                  <div class="arch-col">
+                    <div class="arch-tag">Client</div>
+                    <div class="arch-node"><b>Agent Web UI</b><span>React · AngularJS</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Legacy core</div>
+                    <div class="arch-node"><b>Monolith</b><span>Booking system</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Services</div>
+                    <div class="arch-node"><b>TIBCO</b><span>Legacy SOAP</span></div>
+                    <div class="arch-node accent"><b>Wasola</b><span>REST services</span></div>
+                    <div class="arch-node accent"><b>Booking Service</b><span>Java 17 · Spring Boot</span></div>
+                    <div class="arch-node accent"><b>Ancillary Service</b><span>Java 17 · Spring Boot</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Data &amp; messaging</div>
+                    <div class="arch-node"><b>Oracle</b><span>Transactional</span></div>
+                    <div class="arch-node"><b>Couchbase</b><span>Distributed</span></div>
+                    <div class="arch-node accent"><b>Solace</b><span>Event messaging</span></div>
+                  </div>
+                </div>
+                <div class="arch-direct">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6a2 2 0 0 1 2-2h6M9 18H6a2 2 0 0 0-2 2M9 18a2 2 0 0 0 2 2h6M17 4l3 0M17 4l0 3M14 20l3 0M14 20l0-3"/></svg>
+                  <span>Direct link — the <b>Monolith</b> (legacy core), <b>Booking Service</b> and <b>Ancillary Service</b> each connect straight to Oracle · Couchbase · Solace.</span>
+                </div>
+
+                <div class="arch-band-head" style="margin-top:1.9rem">Target state</div>
+                <div class="arch">
+                  <div class="arch-col">
+                    <div class="arch-tag">Client</div>
+                    <div class="arch-node"><b>Agent Web UI</b><span>React · AngularJS</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Edge</div>
+                    <div class="arch-node accent"><b>Spring Cloud Gateway</b><span>Routing · Auth</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Domain services</div>
+                    <div class="arch-node"><b>Booking Service</b><span>Java 17 · Spring Boot</span></div>
+                    <div class="arch-node"><b>Ancillary Service</b><span>Java 17 · Spring Boot</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Data &amp; events</div>
+                    <div class="arch-node"><b>Oracle</b><span>Transactional</span></div>
+                    <div class="arch-node"><b>Couchbase</b><span>Distributed</span></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Flagship: Authentication / Sidecar -->
+            <article class="card overflow-hidden" data-reveal>
+              <div class="grid lg:grid-cols-[1fr_1.3fr]">
+                <div class="p-8 sm:p-10 border-b lg:border-b-0 lg:border-r border-[var(--border)] bg-[var(--surface-2)]">
+                  <span class="chip mb-5">02 — Security · 2024–25</span>
+                  <h3 class="font-display font-bold text-2xl text-[var(--text)] leading-tight">Authentication — Access Token &amp; Sidecar</h3>
+                  <p class="text-sm text-[var(--accent)] font-semibold mt-2">Software Architect · Coforge</p>
+                  <p class="text-[var(--text-muted)] leading-relaxed mt-4">Centralized authentication  for the microservices platform — a token-validation service applied consistently to every service via the sidecar pattern.</p>
+                  <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="chip">Java 17</span><span class="chip">Spring API Gateway</span><span class="chip">Azure AD</span><span class="chip">JWT</span><span class="chip">Spring Security</span><span class="chip">Sidecar Pattern</span>
+                  </div>
+                </div>
+                <div class="p-8 sm:p-10">
+                  <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--text-muted)] mb-5">Features &amp; contributions</div>
+                  <ul class="space-y-4">
+                    <li><div class="font-semibold text-[var(--text)]">Access-token validation service</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">A dedicated microservice securing API access across the platform.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">Sidecar pattern</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Consistent authentication attached to each service without duplicating auth logic.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">Secure service-to-service</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Trusted communication between services in a distributed architecture.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">Stronger enforcement</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Integrated with Azure AD (Spring Cloud Azure AD) and JWT for centralized, uniform security.</p></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="arch-band">
+                <div class="arch-band-head">High-level architecture — sidecar auth · pod view</div>
+                <div class="arch-svg">
+                  <svg viewBox="0 0 980 520" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sidecar authentication pattern — Kubernetes pod view">
+                    <defs>
+                      <marker id="sc-ag" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L9,3.5 z" fill="#30a46c"/></marker>
+                      <marker id="sc-ab" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L9,3.5 z" fill="#388bfd"/></marker>
+                      <marker id="sc-ar" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L9,3.5 z" fill="#f85149"/></marker>
+                      <marker id="sc-ay" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L9,3.5 z" fill="#e3b341"/></marker>
+                    </defs>
+                    <rect width="980" height="520" fill="#0d1117" rx="12"/>
+                    <text x="24" y="30" font-family="Segoe UI,sans-serif" font-size="10" fill="#30a46c" font-weight="700" letter-spacing="2">HIGH-LEVEL ARCHITECTURE · SIDECAR AUTH PATTERN — POD VIEW</text>
+
+                    <rect x="24" y="190" width="110" height="80" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+                    <text x="79" y="213" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle" font-weight="700" letter-spacing="1">CLIENT</text>
+                    <text x="79" y="233" font-family="Segoe UI,sans-serif" font-size="13" fill="#e6edf3" text-anchor="middle" font-weight="700">Web / Mobile</text>
+                    <text x="79" y="252" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Bearer Token (JWT)</text>
+
+                    <line x1="134" y1="230" x2="184" y2="230" stroke="#388bfd" stroke-width="2" marker-end="url(#sc-ab)"/>
+                    <text x="159" y="222" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#388bfd" text-anchor="middle" font-weight="600">HTTPS</text>
+                    <text x="159" y="244" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#388bfd" text-anchor="middle" opacity=".6">→ Pod</text>
+
+                    <rect x="188" y="55" width="700" height="400" rx="14" fill="#131008" stroke="#e3b341" stroke-width="2.5"/>
+                    <rect x="296" y="44" width="100" height="20" rx="10" fill="#e3b341"/>
+                    <text x="346" y="58" font-family="Segoe UI,sans-serif" font-size="9" fill="#0d1117" text-anchor="middle" font-weight="700" letter-spacing="1">☸ K8S POD</text>
+
+                    <rect x="204" y="80" width="232" height="360" rx="12" fill="#0d1f33" stroke="#388bfd" stroke-width="2" stroke-dasharray="7,4"/>
+                    <rect x="270" y="69" width="100" height="18" rx="9" fill="#388bfd"/>
+                    <text x="320" y="81" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#fff" text-anchor="middle" font-weight="700" letter-spacing="1">SIDECAR</text>
+
+                    <rect x="220" y="100" width="200" height="68" rx="8" fill="#1c2a3a" stroke="#388bfd" stroke-width="1.5"/>
+                    <text x="320" y="123" font-family="Segoe UI,sans-serif" font-size="11.5" fill="#79c0ff" text-anchor="middle" font-weight="700">Spring Cloud Gateway</text>
+                    <text x="320" y="141" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Request Interception · Routing</text>
+                    <text x="320" y="157" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Filter Chain</text>
+
+                    <line x1="320" y1="168" x2="320" y2="196" stroke="#388bfd" stroke-width="1.5" marker-end="url(#sc-ab)"/>
+
+                    <rect x="220" y="200" width="200" height="68" rx="8" fill="#1a1f2e" stroke="#a371f7" stroke-width="1.5"/>
+                    <text x="320" y="223" font-family="Segoe UI,sans-serif" font-size="11.5" fill="#d2a8ff" text-anchor="middle" font-weight="700">Azure AD</text>
+                    <text x="320" y="241" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Token Validation · JWKS</text>
+                    <text x="320" y="257" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Introspection Endpoint</text>
+
+                    <line x1="320" y1="268" x2="320" y2="296" stroke="#388bfd" stroke-width="1.5" marker-end="url(#sc-ab)"/>
+
+                    <rect x="220" y="300" width="200" height="68" rx="8" fill="#1c2a1c" stroke="#30a46c" stroke-width="1.5"/>
+                    <text x="320" y="323" font-family="Segoe UI,sans-serif" font-size="11.5" fill="#7ee787" text-anchor="middle" font-weight="700">Spring Security</text>
+                    <text x="320" y="341" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Claims Extraction · Role Enforcement</text>
+                    <text x="320" y="357" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">SecurityContextHolder</text>
+
+                    <line x1="420" y1="334" x2="454" y2="334" stroke="#e3b341" stroke-width="2" marker-end="url(#sc-ay)"/>
+                    <polygon points="490,298 526,334 490,370 454,334" fill="#1c1f26" stroke="#e3b341" stroke-width="2"/>
+                    <text x="490" y="330" font-family="Segoe UI,sans-serif" font-size="9" fill="#e3b341" text-anchor="middle" font-weight="700">Token</text>
+                    <text x="490" y="343" font-family="Segoe UI,sans-serif" font-size="9" fill="#e3b341" text-anchor="middle" font-weight="700">Valid?</text>
+
+                    <rect x="560" y="80" width="310" height="360" rx="12" fill="#0d1f15" stroke="#30a46c" stroke-width="2"/>
+                    <rect x="655" y="69" width="120" height="18" rx="9" fill="#30a46c"/>
+                    <text x="715" y="81" font-family="Segoe UI,sans-serif" font-size="8.5" fill="#fff" text-anchor="middle" font-weight="700" letter-spacing="1">APP CONTAINER</text>
+
+                    <rect x="585" y="155" width="260" height="80" rx="10" fill="#161b22" stroke="#30a46c" stroke-width="1.5"/>
+                    <text x="715" y="180" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle" font-weight="700" letter-spacing="1">MICROSERVICE</text>
+                    <text x="715" y="200" font-family="Segoe UI,sans-serif" font-size="14" fill="#e6edf3" text-anchor="middle" font-weight="700">Spring Boot Service</text>
+                    <text x="715" y="220" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e" text-anchor="middle">Java 17 · REST APIs</text>
+
+                    <text x="715" y="262" font-family="Segoe UI,sans-serif" font-size="9" fill="#444" text-anchor="middle" font-weight="700">— OR —</text>
+
+                    <rect x="585" y="272" width="260" height="80" rx="10" fill="#161b22" stroke="#444" stroke-width="1.5" stroke-dasharray="5,3"/>
+                    <text x="715" y="297" font-family="Segoe UI,sans-serif" font-size="9" fill="#555" text-anchor="middle" font-weight="700" letter-spacing="1">LEGACY · MONOLITH</text>
+                    <text x="715" y="317" font-family="Segoe UI,sans-serif" font-size="14" fill="#8b949e" text-anchor="middle" font-weight="700">Monolith App</text>
+                    <text x="715" y="337" font-family="Segoe UI,sans-serif" font-size="9" fill="#555" text-anchor="middle">Incremental removal in progress</text>
+
+                    <polyline points="526,334 548,334 548,195 585,195" fill="none" stroke="#30a46c" stroke-width="2" marker-end="url(#sc-ag)"/>
+                    <text x="550" y="220" font-family="Segoe UI,sans-serif" font-size="9" fill="#30a46c" font-weight="700" text-anchor="middle">✓ VALID</text>
+
+                    <line x1="715" y1="235" x2="715" y2="272" stroke="#444" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+                    <polyline points="490,370 490,440 490,470" fill="none" stroke="#f85149" stroke-width="2" marker-end="url(#sc-ar)"/>
+                    <text x="504" y="430" font-family="Segoe UI,sans-serif" font-size="9" fill="#f85149" font-weight="700">✗ INVALID</text>
+
+                    <rect x="390" y="472" width="200" height="32" rx="8" fill="#1f0d0d" stroke="#f85149" stroke-width="1.5"/>
+                    <text x="490" y="491" font-family="Segoe UI,sans-serif" font-size="11" fill="#f85149" text-anchor="middle" font-weight="700">401 Unauthorized — Request Blocked</text>
+
+                    <circle cx="24" cy="512" r="5" fill="#e3b341"/>
+                    <text x="34" y="516" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e">Kubernetes Pod</text>
+                    <circle cx="140" cy="512" r="5" fill="#388bfd"/>
+                    <text x="150" y="516" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e">Sidecar Container</text>
+                    <circle cx="268" cy="512" r="5" fill="#30a46c"/>
+                    <text x="278" y="516" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e">Valid token path</text>
+                    <circle cx="380" cy="512" r="5" fill="#f85149"/>
+                    <text x="390" y="516" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e">Blocked — 401 (no upstream call)</text>
+                    <circle cx="556" cy="512" r="5" fill="#a371f7"/>
+                    <text x="566" y="516" font-family="Segoe UI,sans-serif" font-size="9" fill="#8b949e">Azure AD — external token authority</text>
+                  </svg>
+                </div>
+              </div>
+            </article>
+
+            <!-- Compact: remaining Emirates projects -->
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div class="card card-hover p-6 flex flex-col" data-reveal>
+                <div class="font-mono text-[11px] tracking-wider text-[var(--text-muted)] mb-2.5">Aug 2022 — Mar 2025</div>
+                <h4 class="font-display font-bold text-[var(--text)] text-[1.05rem] leading-snug">Legacy Development &amp; Enhancement</h4>
+                <p class="text-sm text-[var(--text-muted)] mt-2 leading-snug flex-1">Feature development &amp; production support on the high-traffic monolith — flight booking, agent workflows and ancillary services.</p>
+                <div class="flex flex-wrap gap-1.5 mt-4"><span class="chip">Spring MVC</span><span class="chip">AngularJS</span><span class="chip">Oracle</span><span class="chip">Couchbase</span></div>
+              </div>
+              <div class="card card-hover p-6 flex flex-col" data-reveal style="--reveal-delay:60ms">
+                <div class="font-mono text-[11px] tracking-wider text-[var(--text-muted)] mb-2.5">May 2023 — Mar 2025</div>
+                <h4 class="font-display font-bold text-[var(--text)] text-[1.05rem] leading-snug">Monolith Modularization</h4>
+                <p class="text-sm text-[var(--text-muted)] mt-2 leading-snug flex-1">Refactored the monolith into independent front-end and back-end repositories — a modular foundation for the microservices migration, retaining a single deployable.</p>
+                <div class="flex flex-wrap gap-1.5 mt-4"><span class="chip">Java 17</span><span class="chip">Spring Boot</span><span class="chip">Modular Arch</span></div>
+              </div>
+              <div class="card card-hover p-6 flex flex-col" data-reveal>
+                <div class="font-mono text-[11px] tracking-wider text-[var(--text-muted)] mb-2.5">Jan 2024 — Aug 2024</div>
+                <h4 class="font-display font-bold text-[var(--text)] text-[1.05rem] leading-snug">Access Management — RBAC</h4>
+                <p class="text-sm text-[var(--text-muted)] mt-2 leading-snug flex-1">Role-based access control across applications: role-location-permission mapping in Couchbase with a React.js admin UI for roles &amp; permissions.</p>
+                <div class="flex flex-wrap gap-1.5 mt-4"><span class="chip">Spring Boot</span><span class="chip">React.js</span><span class="chip">Couchbase</span><span class="chip">RBAC</span></div>
+              </div>
+              <div class="card card-hover p-6 flex flex-col" data-reveal style="--reveal-delay:60ms">
+                <div class="font-mono text-[11px] tracking-wider text-[var(--text-muted)] mb-2.5">May 2024 — Aug 2024</div>
+                <h4 class="font-display font-bold text-[var(--text)] text-[1.05rem] leading-snug">UI Modernization — Microfrontend POC</h4>
+                <p class="text-sm text-[var(--text-muted)] mt-2 leading-snug flex-1">Proof of concept modernizing the agent UI with a microfrontend architecture — modular UI for independent development, integrating AngularJS with React.</p>
+                <div class="flex flex-wrap gap-1.5 mt-4"><span class="chip">Microfrontend</span><span class="chip">AngularJS</span><span class="chip">React.js</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== GROUP: Hindustan Times ===== -->
+          <div class="space-y-6 border-t border-[var(--border)] pt-14">
+            <div class="flex items-end justify-between gap-4" data-reveal>
+              <div>
+                <div class="eyebrow mb-3">Hindustan Times</div>
+                <h3 class="font-display font-bold text-2xl sm:text-[1.7rem] text-[var(--text)] tracking-tight leading-tight">Content Platforms — Crawl, Search &amp; Deliver</h3>
+                <p class="text-[var(--text-muted)] mt-2 max-w-xl leading-relaxed">A decade building content automation, search and delivery systems operating at news scale.</p>
+              </div>
+              <span class="font-mono text-xs text-[var(--text-muted)] hidden md:block shrink-0">5 projects</span>
+            </div>
+
+            <!-- Flagship: Auto Crawling & Scraping -->
+            <article class="card overflow-hidden" data-reveal>
+              <div class="grid lg:grid-cols-[1fr_1.3fr]">
+                <div class="p-8 sm:p-10 border-b lg:border-b-0 lg:border-r border-[var(--border)] bg-[var(--surface-2)]">
+                  <span class="chip mb-5">03 — Automation · 2017–21</span>
+                  <h3 class="font-display font-bold text-2xl text-[var(--text)] leading-tight">UI-Based Auto Crawling &amp; Scraping Platform</h3>
+                  <p class="text-sm text-[var(--accent)] font-semibold mt-2">Senior Software Engineer · Hindustan Times</p>
+                  <p class="text-[var(--text-muted)] leading-relaxed mt-4">
+                    An end-to-end content automation platform — crawl, scrape, template and deliver
+                    articles across the full writer, QA and client review lifecycle.
+                  </p>
+                  <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">Vue.js</span><span class="chip">Quasar</span><span class="chip">Selenium</span><span class="chip">HTMLUnit</span><span class="chip">FTP</span><span class="chip">RSS</span>
+                  </div>
+                </div>
+                <div class="p-8 sm:p-10">
+                  <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--text-muted)] mb-5">Features &amp; contributions</div>
+                  <ul class="space-y-4">
+                    <li><div class="font-semibold text-[var(--text)]">Four integrated systems</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Configuration management, crawling &amp; scraping, article templating and delivery — working as one workflow.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">Rule-driven configuration</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Define per-site scraping rules with CSS selectors and XPath (Spring Boot, Vue.js, Quasar).</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">Crawling &amp; scraping engine</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Selenium and HTMLUnit extracting structured data from websites.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">Templating &amp; delivery</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Transform raw data into structured content, then distribute via FTP and RSS.</p></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="arch-band">
+                <div class="arch-band-head">High-level architecture — four subsystems</div>
+                <div class="arch">
+                  <div class="arch-col">
+                    <div class="arch-tag">Configure</div>
+                    <div class="arch-node accent"><b>Configuration Mgmt</b><span>CSS · XPath rules</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Crawl</div>
+                    <div class="arch-node"><b>Scraping Engine</b><span>Selenium · HTMLUnit</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Template</div>
+                    <div class="arch-node"><b>Article Templating</b><span>Structuring</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Review</div>
+                    <div class="arch-node"><b>Writer · QA · Client</b><span>Review lifecycle</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Deliver</div>
+                    <div class="arch-node accent"><b>Delivery System</b><span>FTP · RSS</span></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Flagship: HTS Portal -->
+            <article class="card overflow-hidden" data-reveal>
+              <div class="grid lg:grid-cols-[1fr_1.3fr]">
+                <div class="p-8 sm:p-10 border-b lg:border-b-0 lg:border-r border-[var(--border)] bg-[var(--surface-2)]">
+                  <span class="chip mb-5">04 — Content platform · 2012–14</span>
+                  <h3 class="font-display font-bold text-2xl text-[var(--text)] leading-tight">HTS Portal — Large-Scale Content &amp; Search</h3>
+                  <p class="text-sm text-[var(--accent)] font-semibold mt-2">Software Engineer · Hindustan Times</p>
+                  <p class="text-[var(--text-muted)] leading-relaxed mt-4">
+                    A content platform managing millions of articles and images across multiple
+                    publications, with high-volume daily ingestion and fast search.
+                  </p>
+                  <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="chip">Java</span><span class="chip">Spring</span><span class="chip">Struts 2</span><span class="chip">Hibernate</span><span class="chip">MySQL</span><span class="chip">Apache Solr</span><span class="chip">Bootstrap</span><span class="chip">FTP</span>
+                  </div>
+                </div>
+                <div class="p-8 sm:p-10">
+                  <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--text-muted)] mb-5">Features &amp; contributions</div>
+                  <ul class="space-y-4">
+                    <li><div class="font-semibold text-[var(--text)]">Application architecture</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Spring DI, Struts 2 (MVC) and Hibernate ORM, with a Bootstrap web interface.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">Ingestion pipeline</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Fetch articles and images from FTP and store them with metadata.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">Solr search</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Indexing, filtering and high-performance query execution at scale.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">MySQL tuning</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Optimized queries and indexing to improve response time and scalability.</p></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="arch-band">
+                <div class="arch-band-head">High-level architecture</div>
+                <div class="arch">
+                  <div class="arch-col">
+                    <div class="arch-tag">Source</div>
+                    <div class="arch-node"><b>FTP Feeds</b><span>Articles · images</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Ingestion</div>
+                    <div class="arch-node"><b>Ingestion Pipeline</b><span>Metadata store</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Core</div>
+                    <div class="arch-node"><b>App Layer</b><span>Struts 2 · Spring · Hibernate</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Index &amp; store</div>
+                    <div class="arch-node accent"><b>Apache Solr</b><span>Search index</span></div>
+                    <div class="arch-node"><b>MySQL</b><span>Content store</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">UI</div>
+                    <div class="arch-node"><b>Bootstrap Portal</b><span>Browse · search</span></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Compact: remaining HT projects -->
+            <div class="grid sm:grid-cols-3 gap-5">
+              <div class="card card-hover p-6 flex flex-col" data-reveal>
+                <div class="font-mono text-[11px] tracking-wider text-[var(--text-muted)] mb-2.5">Feb 2015 — Dec 2015</div>
+                <h4 class="font-display font-bold text-[var(--text)] text-[1.05rem] leading-snug">NewZZa Mobile Backend</h4>
+                <p class="text-sm text-[var(--text-muted)] mt-2 leading-snug flex-1">REST backend serving articles &amp; media to mobile apps, with Solr-indexed retrieval and filtering.</p>
+                <div class="flex flex-wrap gap-1.5 mt-4"><span class="chip">Spring MVC</span><span class="chip">Hibernate</span><span class="chip">Solr</span><span class="chip">MySQL</span></div>
+              </div>
+              <div class="card card-hover p-6 flex flex-col" data-reveal style="--reveal-delay:60ms">
+                <div class="font-mono text-[11px] tracking-wider text-[var(--text-muted)] mb-2.5">May 2016 — Jul 2016</div>
+                <h4 class="font-display font-bold text-[var(--text)] text-[1.05rem] leading-snug">NMS — Article Delivery via RSS</h4>
+                <p class="text-sm text-[var(--text-muted)] mt-2 leading-snug flex-1">Configuration-driven RSS delivery for external clients, with secure Basic-Auth endpoints and dynamic feeds.</p>
+                <div class="flex flex-wrap gap-1.5 mt-4"><span class="chip">Vue.js</span><span class="chip">Quasar</span><span class="chip">Spring</span><span class="chip">RSS</span></div>
+              </div>
+              <div class="card card-hover p-6 flex flex-col" data-reveal style="--reveal-delay:120ms">
+                <div class="font-mono text-[11px] tracking-wider text-[var(--text-muted)] mb-2.5">Mar 2016 — Apr 2016</div>
+                <h4 class="font-display font-bold text-[var(--text)] text-[1.05rem] leading-snug">NMS — RSS Splitter</h4>
+                <p class="text-sm text-[var(--text-muted)] mt-2 leading-snug flex-1">Spring Boot console app parsing and splitting RSS feeds into category feeds on a schedule, with per-feed limits.</p>
+                <div class="flex flex-wrap gap-1.5 mt-4"><span class="chip">Spring Boot</span><span class="chip">JDOM</span><span class="chip">Scheduler</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== GROUP: Thomson Digital ===== -->
+          <div class="space-y-6 border-t border-[var(--border)] pt-14">
+            <div class="flex items-end justify-between gap-4" data-reveal>
+              <div>
+                <div class="eyebrow mb-3">Thomson Digital &amp; earlier</div>
+                <h3 class="font-display font-bold text-2xl sm:text-[1.7rem] text-[var(--text)] tracking-tight leading-tight">Publishing Automation &amp; Systems</h3>
+                <p class="text-[var(--text-muted)] mt-2 max-w-xl leading-relaxed">Where it started — automating typesetting from XML, and building real-world systems end to end.</p>
+              </div>
+              <span class="font-mono text-xs text-[var(--text-muted)] hidden md:block shrink-0">2 projects</span>
+            </div>
+
+            <!-- Flagship: InDesign Auto Pagination -->
+            <article class="card overflow-hidden" data-reveal>
+              <div class="grid lg:grid-cols-[1fr_1.3fr]">
+                <div class="p-8 sm:p-10 border-b lg:border-b-0 lg:border-r border-[var(--border)] bg-[var(--surface-2)]">
+                  <span class="chip mb-5">05 — R&amp;D · 2008–10</span>
+                  <h3 class="font-display font-bold text-2xl text-[var(--text)] leading-tight">Adobe InDesign Auto Pagination</h3>
+                  <p class="text-sm text-[var(--accent)] font-semibold mt-2">R&amp;D · Thomson Digital</p>
+                  <p class="text-[var(--text-muted)] leading-relaxed mt-4">
+                    An XML-driven pagination workflow built from scratch to automate InDesign
+                    typesetting for publishers like Elsevier and Pearson, each with their own XML DTDs.
+                  </p>
+                  <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="chip">Java</span><span class="chip">XML</span><span class="chip">XSLT</span><span class="chip">XPath</span><span class="chip">InDesign JS SDK</span>
+                  </div>
+                </div>
+                <div class="p-8 sm:p-10">
+                  <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--text-muted)] mb-5">Features &amp; contributions</div>
+                  <ul class="space-y-4">
+                    <li><div class="font-semibold text-[var(--text)]">Auto pagination (80–90%)</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Automation scripts auto-fill and typeset pages up to 80–90% using the InDesign JavaScript SDK.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">XML→XML transformation</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Transformation engine built with Java, XSLT and XPath against publisher DTDs.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">Full layout automation</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Auto table &amp; image placement, bookmarking, linking, XML-out and index-page generation.</p></li>
+                    <li><div class="font-semibold text-[var(--text)]">Workflow integration</div><p class="text-sm text-[var(--text-muted)] leading-snug mt-0.5">Integrated the automation scripts into the InDesign production workflow.</p></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="arch-band">
+                <div class="arch-band-head">High-level architecture</div>
+                <div class="arch">
+                  <div class="arch-col">
+                    <div class="arch-tag">Input</div>
+                    <div class="arch-node"><b>Publisher XML</b><span>Elsevier · Pearson DTDs</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Transform</div>
+                    <div class="arch-node"><b>XSLT / XPath</b><span>Java engine</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Typeset</div>
+                    <div class="arch-node accent"><b>InDesign JS SDK</b><span>80–90% auto</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Automate</div>
+                    <div class="arch-node"><b>Layout Engine</b><span>Tables · images · index</span></div>
+                  </div>
+                  <div class="arch-flow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+                  <div class="arch-col">
+                    <div class="arch-tag">Output</div>
+                    <div class="arch-node"><b>Paginated Pages</b><span>+ XML out</span></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Compact: Kiosk -->
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div class="card card-hover p-6 flex flex-col" data-reveal>
+                <div class="font-mono text-[11px] tracking-wider text-[var(--text-muted)] mb-2.5">Side project</div>
+                <h4 class="font-display font-bold text-[var(--text)] text-[1.05rem] leading-snug">Centralised Kiosk Display &amp; Ad Management</h4>
+                <p class="text-sm text-[var(--text-muted)] mt-2 leading-snug flex-1">Scheduled advertisement display on Linux-based kiosks with an ad-wallet — debit on a successful play, refund on failure. Deployed at Rajasthan bus terminals and malls.</p>
+                <div class="flex flex-wrap gap-1.5 mt-4"><span class="chip">Vue.js</span><span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">MySQL</span><span class="chip">Redis</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ACHIEVEMENTS + EDUCATION ============ -->
+    <section class="py-24 sm:py-28 relative">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16">
+
+        <!-- achievements -->
+        <div>
+          <p class="eyebrow mb-5" data-reveal>05 — Key achievements</p>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text)] leading-tight mb-8" data-reveal>Recognized impact.</h2>
+          <div class="space-y-4">
+            <div class="card p-6 card-hover flex gap-4" data-reveal>
+              <span class="monogram w-11 h-11 rounded-xl grid place-items-center shrink-0 text-base">01</span>
+              <div>
+                <h3 class="font-semibold text-[var(--text)]">Zero-impact TIBCO → Wasola migration</h3>
+                <p class="text-sm text-[var(--text-muted)] leading-snug mt-1">Migrated stateless services using a microservices + feature-flag strategy with no system downtime — recognized by the client.</p>
+              </div>
+            </div>
+            <div class="card p-6 card-hover flex gap-4" data-reveal style="--reveal-delay:80ms">
+              <span class="monogram w-11 h-11 rounded-xl grid place-items-center shrink-0 text-base">02</span>
+              <div>
+                <h3 class="font-semibold text-[var(--text)]">Monolith → Microservices transformation</h3>
+                <p class="text-sm text-[var(--text-muted)] leading-snug mt-1">Led a step-by-step shift from one large application to smaller services, shaping the service design the whole platform was built on.</p>
+              </div>
+            </div>
+            <div class="card p-6 card-hover flex gap-4" data-reveal style="--reveal-delay:160ms">
+              <span class="monogram w-11 h-11 rounded-xl grid place-items-center shrink-0 text-base">03</span>
+              <div>
+                <h3 class="font-semibold text-[var(--text)]">AI-assisted delivery</h3>
+                <p class="text-sm text-[var(--text-muted)] leading-snug mt-1">Adopted AI tooling for unit-test generation and legacy-code comprehension, measurably improving delivery efficiency.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- education -->
+        <div>
+          <p class="eyebrow mb-5" data-reveal>06 — Education</p>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text)] leading-tight mb-8" data-reveal>Foundations.</h2>
+          <div class="space-y-4">
+            <div class="card p-7 card-hover" data-reveal>
+              <div class="flex items-start gap-4">
+                <span class="text-[var(--accent)] shrink-0 mt-0.5">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </span>
+                <div>
+                  <h3 class="font-display font-bold text-lg text-[var(--text)]">B.Sc. in Computer Science</h3>
+                  <p class="text-[var(--accent)] font-semibold text-sm mt-1">Sikkim Manipal University</p>
+                </div>
+              </div>
+            </div>
+            <div class="card p-7 card-hover" data-reveal style="--reveal-delay:80ms">
+              <div class="flex items-start gap-4">
+                <span class="text-[var(--accent)] shrink-0 mt-0.5">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                </span>
+                <div>
+                  <h3 class="font-display font-bold text-lg text-[var(--text)]">Diploma in Information Technology</h3>
+                  <p class="text-[var(--accent)] font-semibold text-sm mt-1">Board of Technical Education, Uttar Pradesh</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-7" data-reveal style="--reveal-delay:160ms">
+              <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--text-muted)] mb-3">Currently</div>
+              <p class="text-[var(--text-soft)] leading-relaxed">Architecting and implementing image offload for Dnata Travel (via Coforge) — migrating binary assets from SQL Server BLOB columns to Azure Blob Storage, building .NET APIs for zero-downtime cutover and dual-read compatibility.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="py-24 sm:py-32 relative overflow-hidden">
+      <div class="bg-grid absolute inset-0 -z-10"></div>
+      <div class="glow w-[520px] h-[520px] top-0 left-1/2 -translate-x-1/2 opacity-60"></div>
+      <div class="max-w-3xl mx-auto px-5 sm:px-8 text-center relative" data-reveal>
+        <p class="eyebrow justify-center mb-6" style="--reveal-delay:0">07 — Contact</p>
+        <h2 class="font-display font-bold text-4xl sm:text-5xl tracking-tight text-[var(--text)] leading-[1.05]">
+          Let's build something <span class="text-gradient">that scales.</span>
+        </h2>
+        <p class="text-lg text-[var(--text-soft)] mt-6 max-w-xl mx-auto leading-relaxed">
+          Open to architecture leadership, system-design challenges and engineering mentorship.
+          The fastest way to reach me is email.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3 mt-10">
+          <a href="mailto:viveksingh0143@gmail.com" class="btn btn-primary !px-6 !py-3.5">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            viveksingh0143@gmail.com
+          </a>
+          <a href="https://linkedin.com/in/viveksingh0143" target="_blank" rel="noopener" class="btn btn-ghost !px-6 !py-3.5">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            LinkedIn
+          </a>
+          <a href="Vivek-Kumar-Resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost !px-6 !py-3.5">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            View Resume
+          </a>
+        </div>
+        <p class="font-mono text-sm text-[var(--text-muted)] mt-8">Ghaziabad, Uttar Pradesh, India</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="border-t border-[var(--border)] py-10">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="monogram w-9 h-9 rounded-lg grid place-items-center text-sm">VK</span>
+        <span class="font-display font-bold text-[var(--text)]">Vivek Kumar</span>
+      </div>
+      <p class="text-sm text-[var(--text-muted)] font-mono">© <span id="year">2026</span> · Designed &amp; engineered with responsibility</p>
+      <div class="flex items-center gap-5">
+        <a href="mailto:viveksingh0143@gmail.com" class="link-underline text-sm">Email</a>
+        <a href="https://linkedin.com/in/viveksingh0143" target="_blank" rel="noopener" class="link-underline text-sm">LinkedIn</a>
+        <a href="Vivek-Kumar-Resume.pdf" download class="link-underline text-sm">Résumé</a>
+        <a href="#top" class="link-underline text-sm">Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ AI CHAT (rule-based, no external AI) ============ -->
+  <div id="chat" class="chat-widget">
+    <div class="chat-panel" id="chat-panel" role="dialog" aria-label="Ask about Vivek" aria-modal="false">
+      <div class="chat-head">
+        <span class="monogram w-10 h-10 rounded-xl grid place-items-center text-base shrink-0">VK</span>
+        <div class="min-w-0">
+          <div class="chat-title">Ask about Vivek</div>
+          <div class="chat-sub"><span class="chat-status-dot"></span> Answers instantly · about Vivek</div>
+        </div>
+        <a href="Vivek-Kumar-Resume.pdf" target="_blank" rel="noopener" class="chat-icon-btn" aria-label="View Resume" title="View Resume">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        </a>
+        <button id="chat-close" class="chat-icon-btn" aria-label="Close chat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="chat-log" id="chat-log" aria-live="polite"></div>
+      <div class="chat-suggest" id="chat-suggest"></div>
+      <form class="chat-form" id="chat-form" autocomplete="off">
+        <input class="chat-input" id="chat-input" type="text" placeholder="Ask anything about Vivek…" aria-label="Type your question" />
+        <button class="chat-send" type="submit" aria-label="Send">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <button class="chat-fab" id="chat-toggle" aria-label="Ask about Vivek" aria-expanded="false">
+      <svg class="ic-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <svg class="ic-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="quoteassist-flow.js"></script>
+</body>
+</html>

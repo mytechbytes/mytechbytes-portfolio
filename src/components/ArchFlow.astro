@@ -1,0 +1,45 @@
+---
+// Data-driven "column → arrow → column" architecture flow.
+// Renders one or more flows (e.g. current state + target state).
+interface Node { name: string; sub: string; accent?: boolean; }
+interface Column { tag: string; nodes: Node[]; }
+interface Direct { icon?: string; text: string; }
+interface Flow { head: string; columns: Column[]; direct?: Direct; }
+interface Props { flows: Flow[]; }
+const { flows } = Astro.props;
+---
+
+{flows.map((flow, fi) => (
+  <>
+    <div class="arch-band-head" style={fi > 0 ? "margin-top:1.9rem" : undefined}>{flow.head}</div>
+    <div class="arch">
+      {flow.columns.map((col, ci) => (
+        <>
+          <div class="arch-col">
+            <div class="arch-tag">{col.tag}</div>
+            {col.nodes.map((n) => (
+              <div class={n.accent ? "arch-node accent" : "arch-node"}>
+                <b>{n.name}</b><span>{n.sub}</span>
+              </div>
+            ))}
+          </div>
+          {ci < flow.columns.length - 1 && (
+            <div class="arch-flow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </div>
+          )}
+        </>
+      ))}
+    </div>
+    {flow.direct && (
+      <div class="arch-direct">
+        {flow.direct.icon === "refresh" ? (
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9M3 12l3-3M3 12l3 3"/></svg>
+        ) : (
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6a2 2 0 0 1 2-2h6M9 18H6a2 2 0 0 0-2 2M9 18a2 2 0 0 0 2 2h6M17 4l3 0M17 4l0 3M14 20l3 0M14 20l0-3"/></svg>
+        )}
+        <span set:html={flow.direct.text}></span>
+      </div>
+    )}
+  </>
+))}

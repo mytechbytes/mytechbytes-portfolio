@@ -1,0 +1,43 @@
+---
+import site from "../data/site.json";
+---
+
+<header id="nav" class="nav-shell fixed top-0 inset-x-0 z-50">
+  <!-- Hidden checkbox drives the mobile drawer (pure CSS, no JS needed) -->
+  <input type="checkbox" id="nav-toggle" class="sr-only" aria-hidden="true" />
+
+  <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-[72px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <span class="monogram w-10 h-10 rounded-xl grid place-items-center text-lg">{site.monogram}</span>
+      <span class="hidden sm:flex flex-col leading-tight">
+        <span class="font-display font-bold text-[15px] tracking-tight text-[var(--text)]">{site.name}</span>
+        <span class="font-mono text-[10px] tracking-[.18em] uppercase text-[var(--text-muted)]">{site.navSubtitle}</span>
+      </span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8">
+      {site.nav.map((item) => <a href={item.href} class="nav-link">{item.label}</a>)}
+    </div>
+
+    <div class="flex items-center gap-2.5">
+      <a href={site.cta.href} class="btn btn-primary hidden sm:inline-flex !py-2.5 !px-4 !text-sm">{site.cta.label}</a>
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle color theme">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <label for="nav-toggle" class="theme-toggle md:hidden cursor-pointer" role="button" aria-label="Toggle menu">
+        <svg class="burger-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg class="burger-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </label>
+    </div>
+  </nav>
+
+  <!-- mobile menu -->
+  <div class="mobile-menu md:hidden border-t border-[var(--border)] bg-[var(--surface)]">
+    <div class="px-6 py-4 flex flex-col gap-1">
+      {site.nav.map((item) => (
+        <a href={item.href} data-mobile-link class="nav-link !text-base py-2.5">{item.label}</a>
+      ))}
+    </div>
+  </div>
+</header>

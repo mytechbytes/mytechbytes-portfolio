@@ -1,0 +1,74 @@
+---
+import portfolio from "../data/portfolio.json";
+const s = portfolio.skills;
+
+// Attach reveal delays matching the original cascade.
+const cats = s.categories.map((c, i) => ({ ...c, delay: i === 0 ? 0 : 80 + (i - 1) * 40 }));
+
+// Group consecutive half-width cards into 2-col rows; others stay full width.
+type Cat = (typeof cats)[number];
+const rows: { pair?: Cat[]; single?: Cat }[] = [];
+for (let i = 0; i < cats.length; i++) {
+  if (cats[i].half && cats[i + 1]?.half) {
+    rows.push({ pair: [cats[i], cats[i + 1]] });
+    i++;
+  } else {
+    rows.push({ single: cats[i] });
+  }
+}
+---
+
+<section id="skills" class="py-24 sm:py-28 relative overflow-hidden">
+  <div class="glow w-[420px] h-[420px] bottom-0 -right-32 opacity-50"></div>
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 relative">
+    <div class="max-w-2xl mb-14" data-reveal>
+      <p class="eyebrow mb-5">{s.eyebrow}</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text)] leading-tight">
+        {s.heading}
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-[.95fr_1.05fr] gap-10 lg:gap-16">
+      <!-- signature bars -->
+      <div class="card p-7 sm:p-9" data-reveal="left">
+        <h3 class="font-display font-semibold text-lg text-[var(--text)] mb-7 flex items-center gap-2.5">
+          <span class="w-2 h-2 rounded-full bg-[var(--accent)]"></span> {s.signatureTitle}
+        </h3>
+        {s.signature.map((row) => (
+          <div class="skill-row">
+            <div class="flex justify-between mb-2 text-sm">
+              <span class="font-semibold text-[var(--text)]" set:html={row.label}></span>
+              <span class="font-mono text-[var(--text-muted)]">{row.level}%</span>
+            </div>
+            <div class="skill-track"><div class="skill-fill" data-level={row.level}></div></div>
+          </div>
+        ))}
+      </div>
+
+      <!-- category chip groups -->
+      <div class="space-y-6">
+        {rows.map((r) =>
+          r.pair ? (
+            <div class="grid sm:grid-cols-2 gap-6">
+              {r.pair.map((c) => (
+                <div class="card p-6 sm:p-7 card-hover" data-reveal="right" style={`--reveal-delay:${c.delay}ms`}>
+                  <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--accent)] mb-4" set:html={c.name}></div>
+                  <div class="flex flex-wrap gap-2">
+                    {c.items.map((it) => <span class="chip">{it}</span>)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div class="card p-6 sm:p-7 card-hover" data-reveal="right" style={`--reveal-delay:${r.single!.delay}ms`}>
+              <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--accent)] mb-4" set:html={r.single!.name}></div>
+              <div class="flex flex-wrap gap-2">
+                {r.single!.items.map((it) => <span class="chip">{it}</span>)}
+              </div>
+            </div>
+          )
+        )}
+      </div>
+    </div>
+  </div>
+</section>

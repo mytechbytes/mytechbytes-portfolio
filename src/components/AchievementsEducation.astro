@@ -1,0 +1,57 @@
+---
+import portfolio from "../data/portfolio.json";
+const ach = portfolio.achievements;
+const edu = portfolio.education;
+---
+
+<section class="py-24 sm:py-28 relative">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16">
+
+    <!-- achievements -->
+    <div>
+      <p class="eyebrow mb-5" data-reveal>{ach.eyebrow}</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text)] leading-tight mb-8" data-reveal>{ach.heading}</h2>
+      <div class="space-y-4">
+        {ach.items.map((it, i) => (
+          <div class="card p-6 card-hover flex gap-4" data-reveal style={`--reveal-delay:${i * 80}ms`}>
+            <span class="monogram w-11 h-11 rounded-xl grid place-items-center shrink-0 text-base">{it.n}</span>
+            <div>
+              <h3 class="font-semibold text-[var(--text)]">{it.title}</h3>
+              <p class="text-sm text-[var(--text-muted)] leading-snug mt-1">{it.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- education -->
+    <div>
+      <p class="eyebrow mb-5" data-reveal>{edu.eyebrow}</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text)] leading-tight mb-8" data-reveal>{edu.heading}</h2>
+      <div class="space-y-4">
+        {edu.items.map((it, i) => (
+          <div class="card p-7 card-hover" data-reveal style={`--reveal-delay:${i * 80}ms`}>
+            <div class="flex items-start gap-4">
+              <span class="text-[var(--accent)] shrink-0 mt-0.5">
+                {it.icon === "doc" ? (
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                ) : (
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                )}
+              </span>
+              <div>
+                <h3 class="font-display font-bold text-lg text-[var(--text)]">{it.degree}</h3>
+                <p class="text-[var(--accent)] font-semibold text-sm mt-1">{it.school}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+
+        <div class="card p-7" data-reveal style="--reveal-delay:160ms">
+          <div class="text-xs font-mono uppercase tracking-[.18em] text-[var(--text-muted)] mb-3">{edu.nowLabel}</div>
+          <p class="text-[var(--text-soft)] leading-relaxed">{edu.now}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

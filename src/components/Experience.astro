@@ -1,0 +1,46 @@
+---
+import portfolio from "../data/portfolio.json";
+const e = portfolio.experience;
+---
+
+<section id="experience" class="py-24 sm:py-28 relative">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-14" data-reveal>
+      <p class="eyebrow mb-5">{e.eyebrow}</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text)] leading-tight">
+        {e.heading}
+      </h2>
+    </div>
+
+    <div class="timeline pl-12 md:pl-16 space-y-12">
+      {e.roles.map((role) => (
+        <article class="relative" data-reveal>
+          <span class="tl-node"></span>
+          <div class="card p-7 sm:p-8 card-hover">
+            <div class="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <h3 class="font-display font-bold text-xl text-[var(--text)]">{role.title}</h3>
+                <p class="text-[var(--accent)] font-semibold mt-1">
+                  {role.company}
+                  {role.meta && (
+                    <>
+                      {" "}<span class="divider-dot">·</span>{" "}
+                      <span class="text-[var(--text-muted)] font-medium">{role.meta}</span>
+                    </>
+                  )}
+                </p>
+              </div>
+              <span class="chip shrink-0">{role.period}</span>
+            </div>
+            {role.note && <p class="text-sm text-[var(--text-muted)] mt-2 italic">{role.note}</p>}
+            <ul class="mt-5 space-y-3 text-[var(--text-soft)] leading-relaxed">
+              {role.bullets.map((b) => (
+                <li class="flex gap-3"><span class="text-[var(--accent)] mt-1.5 shrink-0">▹</span>{b}</li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

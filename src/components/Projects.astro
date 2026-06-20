@@ -1,0 +1,51 @@
+---
+import portfolio from "../data/portfolio.json";
+import ProjectCard from "./ProjectCard.astro";
+const p = portfolio.projects;
+
+const compactGrid: Record<number, string> = {
+  2: "grid sm:grid-cols-2 gap-5",
+  3: "grid sm:grid-cols-3 gap-5",
+};
+---
+
+<section id="projects" class="py-24 sm:py-28 relative overflow-hidden">
+  <div class="glow w-[460px] h-[460px] top-20 -left-40 opacity-50"></div>
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 relative">
+    <div class="max-w-2xl mb-14" data-reveal>
+      <p class="eyebrow mb-5">{p.eyebrow}</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[var(--text)] leading-tight">
+        {p.heading}
+      </h2>
+      <p class="text-[var(--text-muted)] leading-relaxed mt-5 text-lg">{p.intro}</p>
+    </div>
+
+    <div class="space-y-7">
+      {p.groups.map((group, gi) => {
+        const flagships = group.items.filter((it) => it.variant === "flagship");
+        const compacts = group.items.filter((it) => it.variant === "compact");
+        const cols = group.compactCols ?? 2;
+        return (
+          <div class={gi === 0 ? "space-y-6" : "space-y-6 border-t border-[var(--border)] pt-14"}>
+            <div class="flex items-end justify-between gap-4" data-reveal>
+              <div>
+                <div class="eyebrow mb-3">{group.label}</div>
+                <h3 class="font-display font-bold text-2xl sm:text-[1.7rem] text-[var(--text)] tracking-tight leading-tight">{group.title}</h3>
+                <p class="text-[var(--text-muted)] mt-2 max-w-xl leading-relaxed">{group.summary}</p>
+              </div>
+              <span class="font-mono text-xs text-[var(--text-muted)] hidden md:block shrink-0">{group.meta}</span>
+            </div>
+
+            {flagships.map((item) => <ProjectCard item={item} />)}
+
+            {compacts.length > 0 && (
+              <div class={compactGrid[cols] ?? compactGrid[2]}>
+                {compacts.map((item, ci) => <ProjectCard item={item} delay={(ci % cols) * 60} />)}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
