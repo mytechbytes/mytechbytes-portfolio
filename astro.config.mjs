@@ -3,6 +3,8 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import { createLogger } from "vite";
 
+import cloudflare from "@astrojs/cloudflare";
+
 /**
  * Substrings of known, harmless deprecation / noise warnings to suppress,
  * so genuine warnings stay visible. Add new patterns here as needed.
@@ -29,16 +31,21 @@ const quietLogger = {
 // https://astro.build/config
 export default defineConfig({
   output: "static",
+
   build: {
     // Emit pretty URLs as files (e.g. /about.html) rather than directories.
     format: "file",
   },
+
   server: {
     port: 5173,
     host: true,
   },
+
   vite: {
     plugins: [tailwindcss()],
     customLogger: quietLogger,
   },
+
+  adapter: cloudflare(),
 });
