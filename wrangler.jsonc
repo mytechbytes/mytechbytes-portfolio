@@ -3,7 +3,7 @@
   // `astro build` prerenders the whole site to ./dist, which is served as
   // static assets. There is no server function, so no `main` worker entry.
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "vivek-kumar-portfolio",
+  "name": "mytechbytes-portfolio",
   "compatibility_date": "2026-06-24",
   "assets": {
     "directory": "./dist"
