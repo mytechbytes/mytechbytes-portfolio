@@ -1,6 +1,5 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-import cloudflare from "@astrojs/cloudflare";
 import tailwindcss from "@tailwindcss/vite";
 import { createLogger } from "vite";
 
@@ -29,11 +28,10 @@ const quietLogger = {
 
 // https://astro.build/config
 export default defineConfig({
-  // Site stays fully static (all pages prerendered). The Cloudflare adapter is
-  // present so the build can be served from Cloudflare Workers and so individual
-  // routes can opt into on-demand rendering later via `export const prerender = false`.
+  // Fully static export — every page is prerendered to HTML at build time. No
+  // server adapter is used, so the build output in dist/ is the complete,
+  // deployable site (served as static assets on Cloudflare Workers).
   output: "static",
-  adapter: cloudflare(),
   build: {
     // Emit pretty URLs as files (e.g. /about.html) rather than directories.
     format: "file",

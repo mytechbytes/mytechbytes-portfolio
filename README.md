@@ -6,12 +6,11 @@ powers animation, interaction, and the on-page chat assistant.
 
 ## Stack
 
-- **Astro 7** — `output: "static"`, `build.format: "file"`
+- **Astro 7** — `output: "static"`, `build.format: "file"` (every page emitted as `*.html`)
 - **Tailwind 4** — through the `@tailwindcss/vite` plugin (no PostCSS config)
 - **Vite 8**
-- **`@astrojs/cloudflare`** — adapter so the static build deploys to Cloudflare Workers; the site
-  stays fully prerendered, but a route can opt into on-demand rendering later via
-  `export const prerender = false`
+- **No server adapter** — the whole site is prerendered to `dist/`, then served as static assets
+  on **Cloudflare Workers** (via `wrangler`). No server function is needed.
 - **Node 22.12+** (see `.nvmrc`)
 
 ## Project structure
@@ -64,17 +63,17 @@ and no per-message cost. Off-topic questions get the polite refusal from `chat.j
 nvm use            # Node 22
 npm install
 npm run dev        # local dev server on http://localhost:5173
-npm run build      # production build -> dist/client/ (assets) + dist/server/
-npm run preview    # serve the build locally via the Cloudflare workerd runtime
+npm run build      # production build -> dist/ (static .html + assets)
+npm run preview    # serve the built dist/ locally
 npm run deploy     # build, then `wrangler deploy` to Cloudflare Workers
 ```
 
-## Deploy — Cloudflare Workers
+## Deploy — Cloudflare Workers (static assets)
 
-The `@astrojs/cloudflare` adapter splits the build into `dist/client/` (the prerendered static
-assets) and `dist/server/` (empty while the site is fully static). Deployment is configured by
-[`wrangler.jsonc`](./wrangler.jsonc) at the repo root, which the build merges into the adapter's
-generated `dist/client/wrangler.json`.
+`astro build` prerenders the entire site to `dist/`. There is no server function, so deployment is
+just uploading those static assets. [`wrangler.jsonc`](./wrangler.jsonc) at the repo root points
+Wrangler at `dist/`, and [`public/_headers`](./public/_headers) sets immutable caching on the
+hashed `/_astro/*` files.
 
 **Option A — Wrangler from your machine / CI**
 
@@ -91,9 +90,8 @@ The first deploy will prompt you to authenticate (`npx wrangler login`).
 3. Build settings:
    - **Framework preset:** Astro
    - **Build command:** `npm run build`
-   - **Deploy/output:** uses `wrangler.jsonc` (assets served from `dist/client`).
+   - **Build output directory:** `dist`
 4. Set the build **Node version to 22** (matches `.nvmrc`).
 5. **Save and Deploy.** Every push to the production branch redeploys automatically.
 
-No worker code or secrets are needed while the site is fully static — the assets in `dist/client/`
-are the entire site.
+No worker code or secrets are needed — the static assets in `dist/` are the entire site.
