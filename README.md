@@ -1,15 +1,18 @@
 # Vivek Kumar — Portfolio
 
-A fully static portfolio site built with **Astro v6** and **Tailwind 4** (via `@tailwindcss/vite`).
-All content is baked into HTML at build time; JavaScript only powers animation, interaction, and
-the on-page chat assistant.
+A fully static portfolio site built with **Astro v7** and **Tailwind 4** (via `@tailwindcss/vite`),
+deployed on **Cloudflare Workers**. All content is baked into HTML at build time; JavaScript only
+powers animation, interaction, and the on-page chat assistant.
 
 ## Stack
 
-- **Astro 6** — `output: "static"`, `build.format: "file"`
+- **Astro 7** — `output: "static"`, `build.format: "file"`
 - **Tailwind 4** — through the `@tailwindcss/vite` plugin (no PostCSS config)
-- **Vite 7**
-- **Node 22** (see `.nvmrc`)
+- **Vite 8**
+- **`@astrojs/cloudflare`** — adapter so the static build deploys to Cloudflare Workers; the site
+  stays fully prerendered, but a route can opt into on-demand rendering later via
+  `export const prerender = false`
+- **Node 22.12+** (see `.nvmrc`)
 
 ## Project structure
 
@@ -61,30 +64,36 @@ and no per-message cost. Off-topic questions get the polite refusal from `chat.j
 nvm use            # Node 22
 npm install
 npm run dev        # local dev server on http://localhost:5173
-npm run build      # production build -> dist/
-npm run preview    # serve the built dist/ locally
+npm run build      # production build -> dist/client/ (assets) + dist/server/
+npm run preview    # serve the build locally via the Cloudflare workerd runtime
+npm run deploy     # build, then `wrangler deploy` to Cloudflare Workers
 ```
 
-## Deploy — Cloudflare Pages
+## Deploy — Cloudflare Workers
 
-This is a static site, so **no SSR adapter is required**.
+The `@astrojs/cloudflare` adapter splits the build into `dist/client/` (the prerendered static
+assets) and `dist/server/` (empty while the site is fully static). Deployment is configured by
+[`wrangler.jsonc`](./wrangler.jsonc) at the repo root, which the build merges into the adapter's
+generated `dist/client/wrangler.json`.
 
-**Option A — Git integration (recommended)**
+**Option A — Wrangler from your machine / CI**
+
+```bash
+npm run deploy     # = astro build && wrangler deploy
+```
+
+The first deploy will prompt you to authenticate (`npx wrangler login`).
+
+**Option B — Git integration**
 
 1. Push this repo to GitHub/GitLab.
-2. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git** → pick the repo.
+2. Cloudflare dashboard → **Workers & Pages → Create → Connect to Git** → pick the repo.
 3. Build settings:
    - **Framework preset:** Astro
    - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
-4. Environment variables → add **`NODE_VERSION` = `22`** (matches `.nvmrc`).
+   - **Deploy/output:** uses `wrangler.jsonc` (assets served from `dist/client`).
+4. Set the build **Node version to 22** (matches `.nvmrc`).
 5. **Save and Deploy.** Every push to the production branch redeploys automatically.
 
-**Option B — Direct upload via Wrangler**
-
-```bash
-npm run build
-npx wrangler pages deploy dist --project-name vivek-kumar-portfolio
-```
-
-No `functions/` directory and no secrets are needed — the build output in `dist/` is the entire site.
+No worker code or secrets are needed while the site is fully static — the assets in `dist/client/`
+are the entire site.
