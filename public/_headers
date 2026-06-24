@@ -1,3 +1,9 @@
 # Hashed build assets are content-addressed and safe to cache forever.
-/_astro/*
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/*
   Cache-Control: public, max-age=31536000, immutable
